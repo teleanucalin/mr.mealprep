@@ -1,4 +1,4 @@
-import { getAllRecipes, getWeeklyPlan } from "./data";
+import { getClientRecipes, getClientWeeklyPlan } from "./clientData";
 import type {
   MealPreference,
   PlanDay,
@@ -9,7 +9,7 @@ import { hashString, seedRandom } from "./utils";
 const mealOrder = ["breakfast", "lunch", "dinner", "snack"] as const;
 
 const filterRecipes = (preference: MealPreference) => {
-  const recipes = getAllRecipes();
+  const recipes = getClientRecipes();
   return recipes.filter((recipe) => {
     if (preference.dietMode && !recipe.dietMode.includes(preference.dietMode)) {
       return false;
@@ -43,7 +43,7 @@ const pickRecipes = (
 };
 
 export const generatePlan = (preference: MealPreference): WeeklyPlan => {
-  const fallbackPlan = getWeeklyPlan();
+  const fallbackPlan = getClientWeeklyPlan();
   const pool = filterRecipes(preference);
   if (!pool.length) {
     return fallbackPlan;

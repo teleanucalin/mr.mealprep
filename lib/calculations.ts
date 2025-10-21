@@ -6,7 +6,7 @@ import type {
   Recipe,
   WeeklyPlan,
 } from "./types";
-import { getRecipeById } from "./data";
+import { getClientRecipeById } from "./clientData";
 import { sumBy } from "./utils";
 
 const emptyNutrition = (): NutritionFacts => ({
@@ -40,7 +40,7 @@ const averageNutrition = (totals: NutritionFacts, divisor: number): NutritionFac
 export const summarizeDay = (day: PlanDay): DailySummary => {
   const mealsWithRecipes = day.meals
     .map((meal) => {
-      const recipe = getRecipeById(meal.recipeId);
+      const recipe = getClientRecipeById(meal.recipeId);
       if (!recipe) return null;
       return {
         ...recipe,

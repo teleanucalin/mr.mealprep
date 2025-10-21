@@ -1,5 +1,5 @@
 import type { PlanDay } from "./types";
-import { getRecipeById } from "./data";
+import { getClientRecipeById } from "./clientData";
 
 export const planTotals = (days: PlanDay[]) => {
   return days.reduce(
@@ -9,7 +9,7 @@ export const planTotals = (days: PlanDay[]) => {
       let timeMinutes = acc.timeMinutes;
       let servings = acc.servings;
       day.meals.forEach((meal) => {
-        const recipe = getRecipeById(meal.recipeId);
+        const recipe = getClientRecipeById(meal.recipeId);
         if (!recipe) return;
         nutrition.kcal += recipe.nutrition.kcal * meal.servings;
         nutrition.protein_g += recipe.nutrition.protein_g * meal.servings;

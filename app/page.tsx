@@ -6,11 +6,10 @@ export default function Home() {
           Mr. Mealprep
         </p>
         <h1 className="mt-4 text-2xl font-semibold text-text-default">
-          Setup în curs
+          Demo în curând
         </h1>
         <p className="mt-2 text-text-muted">
-          Începe implementarea etapelor pentru MVP. Această pagină va fi
-          înlocuită în etapele următoare.
+          Navighează către <strong>/landing</strong> pentru experiența completă.
         </p>
       </div>
     </div>

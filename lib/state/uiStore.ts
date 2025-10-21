@@ -19,6 +19,7 @@ interface UIState {
   toasts: ToastMessage[];
   addToast: (toast: ToastMessage) => void;
   removeToast: (id: string) => void;
+  clearToasts: () => void;
   setOnboardingComplete: (value: boolean) => void;
   setVarietyLevel: (level: "low" | "balanced" | "high") => void;
   setLockMacros: (locked: boolean) => void;
@@ -37,6 +38,7 @@ export const useUIStore = create<UIState>()(
         set((state) => ({ toasts: [...state.toasts, toast] })),
       removeToast: (id) =>
         set((state) => ({ toasts: state.toasts.filter((toast) => toast.id !== id) })),
+      clearToasts: () => set({ toasts: [] }),
       setOnboardingComplete: (value) => set({ isOnboardingComplete: value }),
       setVarietyLevel: (level) => set({ varietyLevel: level }),
       setLockMacros: (locked) => set({ lockMacros: locked }),

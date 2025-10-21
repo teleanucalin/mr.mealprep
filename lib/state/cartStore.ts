@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import { STORAGE_KEYS } from "../constants";
-import { getRecipeById } from "../data";
+import { getClientRecipeById } from "../clientData";
 import type { CartIngredientLine } from "../types";
 import { sumBy } from "../utils";
 
@@ -29,7 +29,7 @@ export const useCartStore = create<CartState>()(
         const filtered = items.filter((item) => item.name !== name);
         const totalCostRON = sumBy(filtered, (item) => {
           const recipeCost = item.recipeIds.reduce((acc, id) => {
-            const recipe = getRecipeById(id);
+            const recipe = getClientRecipeById(id);
             if (!recipe) return acc;
             return acc + recipe.costRON;
           }, 0);

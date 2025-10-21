@@ -1,5 +1,5 @@
 import type { CartIngredientLine, PlanDay } from "./types";
-import { getRecipeById } from "./data";
+import { getClientRecipeById } from "./clientData";
 
 interface AggregateOptions {
   excludeOptional?: boolean;
@@ -13,7 +13,7 @@ export const aggregateIngredients = (
 
   days.forEach((day) => {
     day.meals.forEach((meal) => {
-      const recipe = getRecipeById(meal.recipeId);
+      const recipe = getClientRecipeById(meal.recipeId);
       if (!recipe) return;
       recipe.ingredients.forEach((ingredient) => {
         if (options.excludeOptional && ingredient.optional) return;
