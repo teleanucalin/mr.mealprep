@@ -1,0 +1,82 @@
+# Ideea centrală & definiția „uzabilității”
+
+* **Legea #1 a lui Krug:** *“Don’t make me think!”* — fiecare pagină/ecran trebuie să fie **evident** și **auto-explicativ** la o privire, fără „semne de întrebare” mentale despre ce este și cum se folosește. Dacă nu poate fi evident, fă-l măcar auto-explicativ prin denumiri bune, ierarhie vizuală și micro-texte clare. 
+* **Uzabil =** „o persoană cu abilități medii poate folosi produsul pentru a realiza ceva **fără să ajungă să nu merite efortul**.” E simplu: mai puține decizii, mai puțină fricțiune, mai multă reușită. 
+
+# Cum folosesc oamenii, de fapt, web-ul
+
+* **Nu citim, scanăm.** Vânăm cuvinte-cheie, ignorăm porțiuni mari de ecran.
+* **Nu optimizăm, „satisfacem”.** Alegem prima opțiune rezonabilă (Back e cel mai folosit buton).
+* **Nu înțelegem tot, „ne descurcăm”.** Folosim pe jumătate corect lucruri pe care nu le-am „priceput” pe deplin — și totuși ne atingem scopul. Implicația: fă designul să funcționeze bine la „muddle through”.  
+
+# Billboard Design 101 (proiectezi pentru scanare, nu lectură)
+
+1. **Folosește convențiile** (locul logo-ului, „coșul”, iconițe standard). Inovația e OK doar dacă noul e *la fel de clar* sau aduce valoare suficientă ca să merite o mică curbă de învățare. **Claritatea bate consistența** când cele două intră în conflict. 
+2. **Ierarhie vizuală clară:** ce e important e mai proeminent; lucrurile înrudite sunt grupate; structura e „cuibărită” vizual. 
+3. **Zone clar definite** ale paginii; **clickabilul** e evident; **zgomotul** (clutter, elemente care nu ajută sarcina) e redus „la un huruit abia sesizabil”. 
+4. **Formatează pentru scanare:** paragrafe scurte, liste cu buline, evidențiază termenii-cheie în bold în primul loc în care apar. 
+
+# Legea #2 a lui Krug (cap. 4)
+
+* *„Nu contează câte clickuri dau, atâta timp cât fiecare click e o alegere **ne-ambiguă și fără efort**.”* Rupe sarcinile în pași simpli, cu decizii „fără gândire grea”. 
+
+# Scrie mai puțin: „Omit needless words” (cap. 5)
+
+* **Taie „happy talk”** (bla-bla motivațional) și **instrucțiunile** inutile — dacă are nevoie de manual, designul nu e clar. Lasă doar textul care ajută exact în momentul deciziei. 
+
+# Navigație: „Street signs & Breadcrumbs” (cap. 6)
+
+* Navigația are mai multe scopuri decât „a te duce undeva”: transmite *unde ești*, *ce e aici*, *ce mai e posibil*, *cum cauți*.
+* Elemente esențiale: **Home** previzibil, **căutare** vizibilă, **page name** clar, **„You are here”**, **breadcrumbs**, **tab-uri** coerente. Fă „**trunk test**”: dacă acoperi headerul, utilizatorul încă înțelege unde e și ce poate face? 
+
+# Prima impresie contează: „Big Bang Theory of Web Design” (cap. 7)
+
+* Homepage-ul trebuie să comunice: **ce este**, **ce pot face aici**, **de ce ar trebui să stau**. Un **tagline** bun ajută, dar nu e obligatoriu dacă mesajul e clar. Evită tentația de a împușca „gâștele cu ouă de aur” (feature-uri care aduc bani dar strică experiența). 
+
+# Pune capăt „războaielor religioase” (cap. 8)
+
+* Designerii vs. dezvoltatorii vs. stakeholderii: nu câștigă cine are opinii mai sonore, ci **ce funcționează la utilizatori**. Conceptul de „Utilizator Mediu” e un mit; testarea mută discuția din „îmi place/nu îmi place” în „am văzut că merge/nu merge”.  
+
+# Testare de uzabilitate „pe 10 cenți pe zi” (cap. 9)
+
+* **Fă-ți singur testele**: e simplu — urmărește 3 oameni cum încearcă sarcini reale, notează unde se împotmolesc, repară, repetă. Mai bine **1 utilizator devreme** decât 50 prea târziu.
+* **Cadență recomandată:** *o dimineață pe lună* (3 participanți, debrief la prânz); e suficient ca să umple backlog-ul de îmbunătățiri pentru o lună. Nu confunda **focus group-urile** cu testele de uzabilitate — sunt lucruri diferite.    
+
+# Mobile (cap. 10): nu mai e doar un oraș din Alabama
+
+* **Trade-off-uri** peste tot: spațiu mic, contexte schimbătoare, întreruperi.
+* **Nu ascunde affordance-urile** (fără hover/cursor nu mai ai „clue” implicit), ai grijă la **flat design** (poate deveni opac), optimizează pentru **learnability** și **memorability** în aplicații. Testează și pe device-uri reale; logistica e diferită. 
+
+# Uzabilitatea ca politețe comună (cap. 11)
+
+* Există un „**rezervor de bunăvoință**”. Îl **consumi** cu parole imposibile, formulare care pierd date, reclame agresive, mesaje de eroare acuzatoare; îl **alimentezi** cu timpi clari, statusuri, **căi de recuperare din erori**, pagini „printer-friendly” când e logic, scuze oneste când nu poți oferi ceea ce utilizatorul dorește.  
+
+# Accesibilitate (cap. 12): „când crezi că ai terminat…”
+
+* Nu poți spune „uzabil” dacă nu e **accesibil**. Începe cu „**low-hanging fruit**”:
+
+  * `alt` corect pentru imagini;
+  * **headings** semantice (`h1`/`h2`…),
+  * formulare cu `<label>`,
+  * link „**Skip to main content**”,
+  * totul accesibil la **tastatură**,
+  * contrast suficient,
+  * teme/template-uri cu accesibilitate în minte. (Vezi și WebAIM pentru ghiduri pas cu pas.) 
+
+# „Guide for the perplexed” (cap. 13)
+
+* Realism organizațional: înțelege „teritoriul”, evită forțele „întunecate” (scope creep, politica internă), ia decizii cu testare frecventă, pune claritatea înaintea orgoliilor de stil. Concentrează-te pe câteva principii puține dar puternice și **repetă**. 
+
+---
+
+## Mini-checklist aplicabil (distilat din carte)
+
+* Denumește lucrurile **cum le caută utilizatorii**, nu cum le numește organizația. 
+* Fă **clickabilul evident** și înlătură ambiguitatea. 
+* Taie **50% din text**, apoi încă puțin. 
+* Păstrează **ierarhie vizuală** și **zone clare**. 
+* **Navigație**: home previzibil, căutare vizibilă, breadcrumbs, „you are here”. Testează cu **trunk test**. 
+* **Testează lunar** cu 3 utilizatori; repară înainte de următoarea rundă. 
+* Pentru **mobile**: nu te baza pe hover; arată affordance-urile, verifică în device-uri reale. 
+* **Respectă utilizatorul**: drumuri de ieșire din erori, mesaje prietenoase, „printer-friendly” unde are sens. 
+* **Accesibilitate**: alt-uri, headings, label-uri, skip-link, tastatură, contrast. 

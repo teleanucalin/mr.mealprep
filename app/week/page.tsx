@@ -182,21 +182,24 @@ export default function WeekPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 page-enter">
       {/* Header */}
-      <div className="flex justify-between items-start">
+      <div className="flex justify-between items-start fade-in">
         <div>
           <h1 className="text-3xl font-bold">{COPY.week.title}</h1>
           <p className="text-muted-foreground">{COPY.week.subtitle}</p>
         </div>
-        <Button onClick={handleAddToCart} className="gap-2">
+        <Button 
+          onClick={handleAddToCart} 
+          className="gap-2 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
+        >
           <ShoppingCart className="h-4 w-4" />
           {COPY.week.addToCart}
         </Button>
       </div>
 
       {/* Week Summary */}
-      <Card>
+      <Card className="scale-in bg-gradient-to-br from-card to-card/50">
         <CardHeader>
           <CardTitle>Rezumat săptămânal</CardTitle>
         </CardHeader>
@@ -227,9 +230,14 @@ export default function WeekPage() {
       </Card>
 
       {/* Days Accordion */}
-      <Accordion type="single" collapsible className="space-y-2" defaultValue="monday">
-        {weekPlan.days.map((day) => (
-          <AccordionItem key={day.day} value={day.day} className="border rounded-lg px-4">
+      <Accordion type="single" collapsible className="space-y-3" defaultValue="monday">
+        {weekPlan.days.map((day, idx) => (
+          <AccordionItem 
+            key={day.day} 
+            value={day.day} 
+            className="border rounded-lg px-4 animate-in slide-in-from-left duration-300 bg-card hover:bg-card/80"
+            style={{ animationDelay: `${idx * 50}ms` }}
+          >
             <AccordionTrigger className="hover:no-underline">
               <div className="flex items-center justify-between w-full pr-4">
                 <div className="flex items-center gap-3">

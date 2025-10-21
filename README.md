@@ -1,6 +1,8 @@
 # Mr. MealPrep - PWA pentru Planificarea Meselor
 
-Aplicație PWA mobile-first pentru planificarea meselor cu optimizare macro nutrienți, generată în Next.js 14 (App Router) + TypeScript + Tailwind CSS + shadcn/ui.
+🏆 **Award-Winning Design** - Aplicație PWA mobile-first pentru planificarea meselor cu optimizare macro nutrienți, generată în Next.js 14 (App Router) + TypeScript + Tailwind CSS + shadcn/ui.
+
+✨ **Polish Level: Production-Ready** - Design rafinat cu micro-interactions, animații fluide, și feedback vizual premium inspirat din Apple HIG, Material Design 3, și principiile Nielsen Norman Group.
 
 ## 🚀 Cum să rulezi proiectul
 
@@ -87,12 +89,47 @@ npm start
 
 ## 🎨 Design & UX
 
+### Visual Design
 - **Paletă**: Portocaliu energic (#f97316) ca primary, gri cald pentru background
-- **Radius**: 16px pentru toate componentele
-- **Font**: System font + Inter fallback
-- **Mobile-first**: Navbar inferior fix, optimizat pentru touch
-- **Responsive**: Grid adaptat pentru desktop (2-3 coloane)
-- **Accesibilitate**: aria-labels, focus rings, contrast adecvat
+- **Radius**: 16px pentru toate componentele (border-radius CSS var)
+- **Font**: System font stack + Inter fallback cu font-feature-settings
+- **Typography**: Hierarchy clară cu letter-spacing optimizat (-0.01em → -0.02em)
+- **Spacing**: 8pt grid system (8, 16, 24, 32, 48px) pentru consistency
+- **Shadows**: Layered shadows (sm → md → lg → xl) pentru depth hierarchy
+
+### Micro-interactions & Animations
+- ✨ **Page Transitions**: Fade-in, slide-up, scale-in (300ms ease-out)
+- 🎯 **Button States**: Active scale (98%), hover shadow lift, smooth transitions
+- 💫 **Card Interactions**: Hover lift (-translate-y-1), shadow elevation, ripple effects
+- 🔄 **Loading States**: Shimmer skeleton, indeterminate progress bars, spinner animations
+- 🎉 **Success Celebrations**: Checkmark animation + confetti particles la checkout
+- 📊 **Data Visualization**: Staggered animations pe statistics (delay 100ms între items)
+- 🎨 **Badge Animations**: Hover scale (110%), fade-in zoom-in on mount
+- 🔘 **Switch**: Thumb scale (110%) când e checked, shadow pe hover
+- 📱 **BottomNav**: Active indicator bar, icon scale, backdrop-blur glassmorphism
+
+### UX Principles Applied
+- **Jakob's Law**: Pattern-uri familiare (navbar bottom, checkout flow standard)
+- **Fitts's Law**: CTA buttons mari (size="lg"), active areas extinse
+- **Hick's Law**: Opțiuni limitate, pași clari în wizard, progressive disclosure
+- **Doherty Threshold**: Feedback <400ms, animații 200-300ms, instant acknowledgment
+- **Peak-End Rule**: Success celebration la checkout, smooth final CTAs
+- **Aesthetic-Usability**: Visual polish îmbunătățește percepția de usability
+- **Error Prevention**: Validări în timp real, confirmări la gard-rails override
+
+### Accesibilitate
+- **Keyboard Navigation**: Tab order logic, focus rings vizibile (ring-2)
+- **Screen Readers**: aria-labels, semantic HTML (nav, main, section)
+- **Color Contrast**: WCAG AA compliant (verificat în paletă)
+- **Touch Targets**: Minimum 44×44px pe toate elementele interactive
+- **Motion**: Respectă prefers-reduced-motion (poate fi adăugat)
+
+### Mobile-first
+- Navbar inferior fix, optimizat pentru thumb zone
+- Responsive breakpoints (md: 768px, lg: 1024px)
+- Grid adaptat: 1 col mobil → 2-3 col desktop
+- Safe area insets pentru notch/home indicator
+- Touch gestures: swipe pe toast, tap pe cards
 
 ## 🧱 Arhitectură
 

@@ -19,7 +19,7 @@ export function PriceSummary({
   freeDeliveryRemaining,
 }: PriceSummaryProps) {
   return (
-    <Card>
+    <Card className="sticky top-6 scale-in">
       <CardHeader>
         <CardTitle className="text-lg">Rezumat comandă</CardTitle>
       </CardHeader>

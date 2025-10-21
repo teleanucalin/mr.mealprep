@@ -33,7 +33,7 @@ export function MacroBadge({ type, value, variant = "default" }: MacroBadgeProps
   return (
     <Badge
       variant={variant}
-      className={variant === "default" ? config.color : ""}
+      className={`${variant === "default" ? config.color : ""} transition-all duration-200 hover:scale-110 hover:shadow-sm cursor-default animate-in fade-in zoom-in duration-300`}
     >
       {displayValue} {config.label}
     </Badge>

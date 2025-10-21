@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { PriceSummary } from "@/components/PriceSummary";
 import { EmptyState } from "@/components/EmptyState";
+import { SuccessCelebration } from "@/components/SuccessCelebration";
 import { ShoppingCart, AlertCircle, CreditCard, Apple } from "lucide-react";
 import { COPY } from "@/lib/copy";
 import { useToast } from "@/components/ui/use-toast";
@@ -135,9 +136,9 @@ export default function CheckoutPage() {
   const canCheckout = isCartValid(cart.subtotal).valid && !!deliveryWindow;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 page-enter">
       {/* Header */}
-      <div>
+      <div className="fade-in">
         <h1 className="text-3xl font-bold">{COPY.checkout.title}</h1>
         <p className="text-muted-foreground">{COPY.checkout.subtitle}</p>
       </div>
@@ -279,11 +280,18 @@ export default function CheckoutPage() {
 
           <Button
             size="lg"
-            className="w-full"
+            className="w-full shadow-xl hover:shadow-2xl transition-all duration-300 disabled:shadow-sm"
             onClick={handleCheckout}
             disabled={!canCheckout || isProcessing}
           >
-            {isProcessing ? "Procesăm comanda..." : COPY.checkout.placeOrder}
+            {isProcessing ? (
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                Procesăm comanda...
+              </div>
+            ) : (
+              COPY.checkout.placeOrder
+            )}
           </Button>
 
           {!canCheckout && (
@@ -303,15 +311,18 @@ export default function CheckoutPage() {
       <Dialog open={showSuccess} onOpenChange={handleSuccessClose}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{COPY.checkout.orderPlaced.title}</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-center">{COPY.checkout.orderPlaced.title}</DialogTitle>
+            <DialogDescription className="text-center">
               {COPY.checkout.orderPlaced.message}
             </DialogDescription>
           </DialogHeader>
+          
+          <SuccessCelebration />
+          
           <div className="py-4">
             <div className="text-center space-y-2">
               <p className="text-sm text-muted-foreground">Număr comandă</p>
-              <p className="text-2xl font-bold">{orderId}</p>
+              <p className="text-2xl font-bold text-primary">{orderId}</p>
             </div>
           </div>
           <DialogFooter>

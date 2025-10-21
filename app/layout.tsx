@@ -1,20 +1,21 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { BottomNav } from "@/components/BottomNav";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#f97316",
+};
+
 export const metadata: Metadata = {
   title: "Mr. MealPrep - Planul tău alimentar optimizat de AI",
   description: "Macro-uri atinse fără calcule. Coș gata de livrare în 1 minut.",
   manifest: "/manifest.json",
-  themeColor: "#f97316",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",

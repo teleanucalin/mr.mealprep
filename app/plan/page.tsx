@@ -16,6 +16,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Zap, TrendingDown, DollarSign, Clock, Lock, AlertCircle } from "lucide-react";
 import { MacroBadge } from "@/components/MacroBadge";
+import { ProgressBar } from "@/components/ProgressBar";
 import { COPY } from "@/lib/copy";
 import { useToast } from "@/components/ui/use-toast";
 import { Efficiency } from "@/lib/types";
@@ -99,9 +100,9 @@ export default function PlanPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 page-enter">
       {/* Header */}
-      <div>
+      <div className="fade-in">
         <h1 className="text-3xl font-bold">{COPY.plan.title}</h1>
         <p className="text-muted-foreground">{COPY.plan.subtitle}</p>
       </div>
@@ -182,14 +183,33 @@ export default function PlanPage() {
 
       {/* Loading State */}
       {isGenerating && (
-        <Card>
+        <Card className="scale-in">
           <CardHeader>
-            <Skeleton className="h-6 w-1/3" />
-            <Skeleton className="h-4 w-1/2" />
+            <CardTitle className="flex items-center gap-2">
+              <Zap className="h-5 w-5 text-primary animate-pulse" />
+              Generăm planul tău...
+            </CardTitle>
+            <CardDescription>
+              AI calculează macro-uri și optimizează rețetele
+            </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <Skeleton className="h-32 w-full" />
-            <Skeleton className="h-32 w-full" />
+          <CardContent className="space-y-6">
+            <ProgressBar indeterminate size="md" />
+            
+            <div className="grid grid-cols-3 gap-4 animate-pulse">
+              <div className="text-center">
+                <Skeleton className="h-12 w-12 rounded-full mx-auto mb-2" />
+                <Skeleton className="h-3 w-full" />
+              </div>
+              <div className="text-center">
+                <Skeleton className="h-12 w-12 rounded-full mx-auto mb-2" />
+                <Skeleton className="h-3 w-full" />
+              </div>
+              <div className="text-center">
+                <Skeleton className="h-12 w-12 rounded-full mx-auto mb-2" />
+                <Skeleton className="h-3 w-full" />
+              </div>
+            </div>
           </CardContent>
         </Card>
       )}
@@ -197,27 +217,30 @@ export default function PlanPage() {
       {/* Plan Preview */}
       {weekPlan && !isGenerating && (
         <>
-          <Card>
+          <Card className="scale-in bg-gradient-to-br from-card to-primary/5">
             <CardHeader>
-              <CardTitle>Rezumat plan săptămânal</CardTitle>
+              <CardTitle className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
+                Rezumat plan săptămânal
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div>
+                <div className="animate-in slide-in-from-bottom duration-300" style={{ animationDelay: '0ms' }}>
                   <p className="text-sm text-muted-foreground">Calorii totale</p>
-                  <p className="text-2xl font-bold">{Math.round(weekPlan.weeklyCalories)}</p>
+                  <p className="text-2xl font-bold text-orange-600">{Math.round(weekPlan.weeklyCalories)}</p>
                 </div>
-                <div>
+                <div className="animate-in slide-in-from-bottom duration-300" style={{ animationDelay: '100ms' }}>
                   <p className="text-sm text-muted-foreground">Proteine</p>
-                  <p className="text-2xl font-bold">{Math.round(weekPlan.weeklyProtein)}g</p>
+                  <p className="text-2xl font-bold text-blue-600">{Math.round(weekPlan.weeklyProtein)}g</p>
                 </div>
-                <div>
+                <div className="animate-in slide-in-from-bottom duration-300" style={{ animationDelay: '200ms' }}>
                   <p className="text-sm text-muted-foreground">Carbohidrați</p>
-                  <p className="text-2xl font-bold">{Math.round(weekPlan.weeklyCarbs)}g</p>
+                  <p className="text-2xl font-bold text-green-600">{Math.round(weekPlan.weeklyCarbs)}g</p>
                 </div>
-                <div>
+                <div className="animate-in slide-in-from-bottom duration-300" style={{ animationDelay: '300ms' }}>
                   <p className="text-sm text-muted-foreground">Grăsimi</p>
-                  <p className="text-2xl font-bold">{Math.round(weekPlan.weeklyFat)}g</p>
+                  <p className="text-2xl font-bold text-yellow-600">{Math.round(weekPlan.weeklyFat)}g</p>
                 </div>
               </div>
 

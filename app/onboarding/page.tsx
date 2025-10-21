@@ -17,6 +17,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { COPY } from "@/lib/copy";
 import { Allergen } from "@/lib/types";
 import { useToast } from "@/components/ui/use-toast";
+import { Stepper } from "@/components/Stepper";
 
 const ALLERGENS: Allergen[] = [
   "gluten",
@@ -126,19 +127,34 @@ export default function OnboardingPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto">
-      <Card>
+    <div className="max-w-3xl mx-auto page-enter">
+      <Card className="scale-in">
         <CardHeader>
           <CardTitle>{COPY.onboarding.title}</CardTitle>
           <CardDescription>{COPY.onboarding.subtitle}</CardDescription>
         </CardHeader>
 
-        <Tabs value={currentTab} onValueChange={setCurrentTab}>
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="basics">Date de bază</TabsTrigger>
-            <TabsTrigger value="goals">Obiective</TabsTrigger>
-            <TabsTrigger value="preferences">Preferințe</TabsTrigger>
-          </TabsList>
+        <CardContent className="pt-2">
+          <Stepper
+            steps={[
+              { id: "basics", label: "Date de bază" },
+              { id: "goals", label: "Obiective" },
+              { id: "preferences", label: "Preferințe" },
+            ]}
+            currentStep={
+              currentTab === "basics" ? 0 : currentTab === "goals" ? 1 : 2
+            }
+          />
+        </CardContent>
+
+        <Tabs value={currentTab} onValueChange={setCurrentTab} className="px-6">
+          <div className="hidden">
+            <TabsList className="grid w-full grid-cols-3">
+              <TabsTrigger value="basics">Date de bază</TabsTrigger>
+              <TabsTrigger value="goals">Obiective</TabsTrigger>
+              <TabsTrigger value="preferences">Preferințe</TabsTrigger>
+            </TabsList>
+          </div>
 
           {/* Tab: Basics */}
           <TabsContent value="basics">
@@ -279,7 +295,7 @@ export default function OnboardingPage() {
                       variant={
                         profile.allergens?.includes(allergen) ? "default" : "outline"
                       }
-                      className="cursor-pointer"
+                      className="cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-md active:scale-95"
                       onClick={() => toggleAllergen(allergen)}
                     >
                       {ALLERGEN_LABELS[allergen]}
