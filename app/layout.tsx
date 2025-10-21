@@ -1,26 +1,20 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { BottomNav } from "@/components/BottomNav";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
-  themeColor: "#f97316",
-};
 
 export const metadata: Metadata = {
-  title: "Mr. MealPrep - Planul tău alimentar optimizat de AI",
-  description: "Macro-uri atinse fără calcule. Coș gata de livrare în 1 minut.",
-  manifest: "/manifest.json",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "MealPrep",
+  title: "Mr. Mealprep",
+  description:
+    "Planuri alimentare personalizate și coș gata de comandă pentru un stil de viață activ.",
+  icons: {
+    icon: "/icons/icon-192x192.png",
+    apple: "/icons/icon-192x192.png",
   },
+  manifest: "/manifest.webmanifest",
+  applicationName: "Mr. Mealprep",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#059669",
 };
 
 export default function RootLayout({
@@ -30,18 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ro">
-      <body className="antialiased">
-        <TooltipProvider>
-          <div className="min-h-screen bg-background pb-nav-safe">
-            <main className="container mx-auto px-4 py-6 max-w-7xl">
-              {children}
-            </main>
-            <BottomNav />
-          </div>
-          <Toaster />
-        </TooltipProvider>
+      <body
+        className="bg-surface-base text-text-default font-sans antialiased"
+        suppressHydrationWarning
+      >
+        <main>{children}</main>
       </body>
     </html>
   );
 }
-

@@ -1,0 +1,725 @@
+{
+  "recipes": [
+    {
+      "id": "r_omleta_hp",
+      "title": "Omletă high-protein",
+      "category": "breakfast",
+      "dietMode": [
+        "omnivor",
+        "high-protein"
+      ],
+      "image": "/images/omleta_hp.jpg",
+      "servingSize": 1,
+      "timeMinutes": 10,
+      "costRON": 6.5,
+      "nutrition": {
+        "kcal": 380,
+        "protein_g": 35,
+        "carbs_g": 8,
+        "fat_g": 22,
+        "fiber_g": 1
+      },
+      "ingredients": [
+        {
+          "name": "Ouă",
+          "qty": 3,
+          "unit": "buc"
+        },
+        {
+          "name": "Albuș lichid",
+          "qty": 100,
+          "unit": "ml",
+          "optional": true
+        },
+        {
+          "name": "Brânză slabă",
+          "qty": 30,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Bate ouăle și albușul 20s.",
+        "Încălzește tigaia 1 min și gătește 2–3 min.",
+        "Adaugă brânza, pliază și servește."
+      ]
+    },
+    {
+      "id": "r_overnight_oats",
+      "title": "Overnight oats cu iaurt",
+      "category": "breakfast",
+      "dietMode": [
+        "omnivor",
+        "vegetarian"
+      ],
+      "image": "/images/overnight_oats.jpg",
+      "servingSize": 1,
+      "timeMinutes": 5,
+      "costRON": 5.0,
+      "nutrition": {
+        "kcal": 420,
+        "protein_g": 24,
+        "carbs_g": 55,
+        "fat_g": 12,
+        "fiber_g": 8
+      },
+      "ingredients": [
+        {
+          "name": "Fulgi de ovăz",
+          "qty": 60,
+          "unit": "g"
+        },
+        {
+          "name": "Iaurt grecesc 2%",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "name": "Lapte",
+          "qty": 100,
+          "unit": "ml"
+        },
+        {
+          "name": "Semințe de chia",
+          "qty": 10,
+          "unit": "g"
+        },
+        {
+          "name": "Miere",
+          "qty": 10,
+          "unit": "g",
+          "optional": true
+        }
+      ],
+      "steps": [
+        "Amestecă toate ingredientele într-un borcan.",
+        "Lasă la frigider peste noapte.",
+        "Servește dimineața, opțional cu fructe."
+      ]
+    },
+    {
+      "id": "r_smoothie_verde",
+      "title": "Smoothie verde proteic",
+      "category": "breakfast",
+      "dietMode": [
+        "omnivor",
+        "vegetarian"
+      ],
+      "image": "/images/smoothie_verde.jpg",
+      "servingSize": 1,
+      "timeMinutes": 5,
+      "costRON": 7.0,
+      "nutrition": {
+        "kcal": 320,
+        "protein_g": 28,
+        "carbs_g": 35,
+        "fat_g": 8,
+        "fiber_g": 6
+      },
+      "ingredients": [
+        {
+          "name": "Banana",
+          "qty": 1,
+          "unit": "buc"
+        },
+        {
+          "name": "Spanac",
+          "qty": 50,
+          "unit": "g"
+        },
+        {
+          "name": "Laptele preferat",
+          "qty": 200,
+          "unit": "ml"
+        },
+        {
+          "name": "Pudră proteică",
+          "qty": 30,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Adaugă toate ingredientele în blender.",
+        "Mixează 30–45s până devine omogen.",
+        "Servește imediat."
+      ]
+    },
+    {
+      "id": "r_pui_orez",
+      "title": "Piept de pui la cuptor + orez",
+      "category": "lunch",
+      "dietMode": [
+        "omnivor",
+        "high-protein"
+      ],
+      "image": "/images/pui_orez.jpg",
+      "servingSize": 1,
+      "timeMinutes": 30,
+      "costRON": 14.0,
+      "nutrition": {
+        "kcal": 520,
+        "protein_g": 48,
+        "carbs_g": 55,
+        "fat_g": 12,
+        "fiber_g": 3
+      },
+      "ingredients": [
+        {
+          "name": "Piept de pui",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "name": "Orez",
+          "qty": 70,
+          "unit": "g"
+        },
+        {
+          "name": "Ulei de măsline",
+          "qty": 5,
+          "unit": "ml"
+        },
+        {
+          "name": "Condimente",
+          "qty": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Condimentează puiul și coace-l 18–20 min la 200°C.",
+        "Fierbe orezul 12–15 min.",
+        "Servește împreună, cu salată la alegere."
+      ]
+    },
+    {
+      "id": "r_somon_airfryer",
+      "title": "Somon cu legume la airfryer",
+      "category": "lunch",
+      "dietMode": [
+        "omnivor",
+        "low-carb"
+      ],
+      "image": "/images/somon_airfryer.jpg",
+      "servingSize": 1,
+      "timeMinutes": 18,
+      "costRON": 22.0,
+      "nutrition": {
+        "kcal": 560,
+        "protein_g": 40,
+        "carbs_g": 18,
+        "fat_g": 35,
+        "fiber_g": 5
+      },
+      "ingredients": [
+        {
+          "name": "File de somon",
+          "qty": 160,
+          "unit": "g"
+        },
+        {
+          "name": "Dovlecel",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "name": "Ardei",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "name": "Ulei de măsline",
+          "qty": 5,
+          "unit": "ml"
+        },
+        {
+          "name": "Sare & piper",
+          "qty": 2,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Asezonează somonul și legumele.",
+        "Gătește la airfryer 10–12 min la 190°C.",
+        "Servește cu lămâie."
+      ]
+    },
+    {
+      "id": "r_quinoa_legume_branza",
+      "title": "Quinoa cu legume & brânză",
+      "category": "lunch",
+      "dietMode": [
+        "vegetarian"
+      ],
+      "image": "/images/quinoa_legume_branza.jpg",
+      "servingSize": 1,
+      "timeMinutes": 20,
+      "costRON": 12.0,
+      "nutrition": {
+        "kcal": 520,
+        "protein_g": 22,
+        "carbs_g": 65,
+        "fat_g": 16,
+        "fiber_g": 9
+      },
+      "ingredients": [
+        {
+          "name": "Quinoa",
+          "qty": 70,
+          "unit": "g"
+        },
+        {
+          "name": "Ardei",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "name": "Dovlecel",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "name": "Brânză telemea slabă",
+          "qty": 40,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Clătește quinoa și fierbe 12–15 min.",
+        "Sotează legumele 5–6 min.",
+        "Amestecă și presară brânza."
+      ]
+    },
+    {
+      "id": "r_paste_integrale_ton",
+      "title": "Paste integrale cu ton",
+      "category": "dinner",
+      "dietMode": [
+        "omnivor"
+      ],
+      "image": "/images/paste_integrale_ton.jpg",
+      "servingSize": 1,
+      "timeMinutes": 15,
+      "costRON": 10.0,
+      "nutrition": {
+        "kcal": 600,
+        "protein_g": 35,
+        "carbs_g": 80,
+        "fat_g": 15,
+        "fiber_g": 9
+      },
+      "ingredients": [
+        {
+          "name": "Paste integrale",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "name": "Ton în conservă",
+          "qty": 120,
+          "unit": "g"
+        },
+        {
+          "name": "Ulei de măsline",
+          "qty": 5,
+          "unit": "ml"
+        },
+        {
+          "name": "Usturoi",
+          "qty": 1,
+          "unit": "căţel"
+        }
+      ],
+      "steps": [
+        "Fierbe pastele al dente.",
+        "Sotează scurt usturoiul în ulei, adaugă tonul.",
+        "Amestecă cu pastele și servește."
+      ]
+    },
+    {
+      "id": "r_bowl_vita_orez",
+      "title": "Bowl de vită & orez",
+      "category": "dinner",
+      "dietMode": [
+        "omnivor",
+        "high-protein"
+      ],
+      "image": "/images/bowl_vita_orez.jpg",
+      "servingSize": 1,
+      "timeMinutes": 25,
+      "costRON": 18.0,
+      "nutrition": {
+        "kcal": 650,
+        "protein_g": 45,
+        "carbs_g": 70,
+        "fat_g": 18,
+        "fiber_g": 6
+      },
+      "ingredients": [
+        {
+          "name": "Carne de vită (antricot/subțire)",
+          "qty": 140,
+          "unit": "g"
+        },
+        {
+          "name": "Orez",
+          "qty": 70,
+          "unit": "g"
+        },
+        {
+          "name": "Morcov",
+          "qty": 80,
+          "unit": "g"
+        },
+        {
+          "name": "Sos de soia light",
+          "qty": 10,
+          "unit": "ml"
+        }
+      ],
+      "steps": [
+        "Fierbe orezul 12–15 min.",
+        "Trage rapid carnea la tigaie 2–3 min/parte.",
+        "Asamblează bolul cu legume feliate."
+      ]
+    },
+    {
+      "id": "r_tocanita_curcan_lowcarb",
+      "title": "Tocăniță de curcan low-carb",
+      "category": "dinner",
+      "dietMode": [
+        "omnivor",
+        "low-carb"
+      ],
+      "image": "/images/tocanita_curcan.jpg",
+      "servingSize": 1,
+      "timeMinutes": 35,
+      "costRON": 13.0,
+      "nutrition": {
+        "kcal": 480,
+        "protein_g": 42,
+        "carbs_g": 20,
+        "fat_g": 24,
+        "fiber_g": 4
+      },
+      "ingredients": [
+        {
+          "name": "Piept de curcan",
+          "qty": 160,
+          "unit": "g"
+        },
+        {
+          "name": "Ceapă",
+          "qty": 60,
+          "unit": "g"
+        },
+        {
+          "name": "Roșii cuburi",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "name": "Ardei",
+          "qty": 80,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Călește ceapa 2–3 min, adaugă curcanul.",
+        "Adaugă roșiile și ardeiul, fierbe 20 min.",
+        "Asezonează și servește."
+      ]
+    },
+    {
+      "id": "r_iaurt_nuci",
+      "title": "Iaurt grecesc + nuci",
+      "category": "snack",
+      "dietMode": [
+        "omnivor",
+        "vegetarian"
+      ],
+      "image": "/images/iaurt_nuci.jpg",
+      "servingSize": 1,
+      "timeMinutes": 2,
+      "costRON": 5.5,
+      "nutrition": {
+        "kcal": 250,
+        "protein_g": 15,
+        "carbs_g": 12,
+        "fat_g": 16,
+        "fiber_g": 1
+      },
+      "ingredients": [
+        {
+          "name": "Iaurt grecesc 2%",
+          "qty": 150,
+          "unit": "g"
+        },
+        {
+          "name": "Nuci",
+          "qty": 20,
+          "unit": "g"
+        },
+        {
+          "name": "Miere",
+          "qty": 5,
+          "unit": "g",
+          "optional": true
+        }
+      ],
+      "steps": [
+        "Amestecă ingredientele într-un bol.",
+        "Servește rece."
+      ]
+    },
+    {
+      "id": "r_hummus_morcovi",
+      "title": "Hummus & morcovi",
+      "category": "snack",
+      "dietMode": [
+        "vegetarian"
+      ],
+      "image": "/images/hummus_morcovi.jpg",
+      "servingSize": 1,
+      "timeMinutes": 5,
+      "costRON": 6.0,
+      "nutrition": {
+        "kcal": 220,
+        "protein_g": 8,
+        "carbs_g": 22,
+        "fat_g": 10,
+        "fiber_g": 6
+      },
+      "ingredients": [
+        {
+          "name": "Hummus",
+          "qty": 60,
+          "unit": "g"
+        },
+        {
+          "name": "Morcovi",
+          "qty": 120,
+          "unit": "g"
+        }
+      ],
+      "steps": [
+        "Feliază morcovii.",
+        "Servește cu hummus."
+      ]
+    }
+  ],
+  "weeklyPlan": {
+    "meta": {
+      "kcalTargetPerDay": 2400,
+      "proteinTarget_g_per_day": 160,
+      "varietyLevel": "balanced",
+      "lockMacros": true
+    },
+    "days": [
+      {
+        "day": "Luni",
+        "meals": [
+          {
+            "type": "breakfast",
+            "recipeId": "r_omleta_hp",
+            "servings": 1
+          },
+          {
+            "type": "lunch",
+            "recipeId": "r_pui_orez",
+            "servings": 1
+          },
+          {
+            "type": "dinner",
+            "recipeId": "r_bowl_vita_orez",
+            "servings": 1
+          },
+          {
+            "type": "snack",
+            "recipeId": "r_iaurt_nuci",
+            "servings": 1
+          }
+        ]
+      },
+      {
+        "day": "Marți",
+        "meals": [
+          {
+            "type": "breakfast",
+            "recipeId": "r_overnight_oats",
+            "servings": 1
+          },
+          {
+            "type": "lunch",
+            "recipeId": "r_somon_airfryer",
+            "servings": 1
+          },
+          {
+            "type": "dinner",
+            "recipeId": "r_paste_integrale_ton",
+            "servings": 1
+          },
+          {
+            "type": "snack",
+            "recipeId": "r_hummus_morcovi",
+            "servings": 1
+          }
+        ]
+      },
+      {
+        "day": "Miercuri",
+        "meals": [
+          {
+            "type": "breakfast",
+            "recipeId": "r_smoothie_verde",
+            "servings": 1
+          },
+          {
+            "type": "lunch",
+            "recipeId": "r_quinoa_legume_branza",
+            "servings": 1
+          },
+          {
+            "type": "dinner",
+            "recipeId": "r_tocanita_curcan_lowcarb",
+            "servings": 1
+          },
+          {
+            "type": "snack",
+            "recipeId": "r_iaurt_nuci",
+            "servings": 1
+          }
+        ]
+      },
+      {
+        "day": "Joi",
+        "meals": [
+          {
+            "type": "breakfast",
+            "recipeId": "r_omleta_hp",
+            "servings": 1
+          },
+          {
+            "type": "lunch",
+            "recipeId": "r_pui_orez",
+            "servings": 1
+          },
+          {
+            "type": "dinner",
+            "recipeId": "r_bowl_vita_orez",
+            "servings": 1
+          },
+          {
+            "type": "snack",
+            "recipeId": "r_hummus_morcovi",
+            "servings": 1
+          }
+        ]
+      },
+      {
+        "day": "Vineri",
+        "meals": [
+          {
+            "type": "breakfast",
+            "recipeId": "r_overnight_oats",
+            "servings": 1
+          },
+          {
+            "type": "lunch",
+            "recipeId": "r_somon_airfryer",
+            "servings": 1
+          },
+          {
+            "type": "dinner",
+            "recipeId": "r_paste_integrale_ton",
+            "servings": 1
+          },
+          {
+            "type": "snack",
+            "recipeId": "r_iaurt_nuci",
+            "servings": 1
+          }
+        ]
+      },
+      {
+        "day": "Sâmbătă",
+        "meals": [
+          {
+            "type": "breakfast",
+            "recipeId": "r_smoothie_verde",
+            "servings": 1
+          },
+          {
+            "type": "lunch",
+            "recipeId": "r_quinoa_legume_branza",
+            "servings": 1
+          },
+          {
+            "type": "dinner",
+            "recipeId": "r_tocanita_curcan_lowcarb",
+            "servings": 1
+          },
+          {
+            "type": "snack",
+            "recipeId": "r_hummus_morcovi",
+            "servings": 1
+          }
+        ]
+      },
+      {
+        "day": "Duminică",
+        "meals": [
+          {
+            "type": "breakfast",
+            "recipeId": "r_omleta_hp",
+            "servings": 1
+          },
+          {
+            "type": "lunch",
+            "recipeId": "r_pui_orez",
+            "servings": 1
+          },
+          {
+            "type": "dinner",
+            "recipeId": "r_bowl_vita_orez",
+            "servings": 1
+          },
+          {
+            "type": "snack",
+            "recipeId": "r_iaurt_nuci",
+            "servings": 1
+          }
+        ]
+      }
+    ]
+  },
+  "inventory": {
+    "alwaysInCart": false,
+    "pantry": [
+      "Sare",
+      "Piper",
+      "Ulei de măsline",
+      "Folie alimentară",
+      "Hârtie de copt"
+    ]
+  },
+  "checkout": {
+    "deliveryWindow": "Sâmbătă 10–13",
+    "cart": [
+      {
+        "recipeId": "r_omleta_hp",
+        "servings": 1
+      },
+      {
+        "recipeId": "r_pui_orez",
+        "servings": 2
+      },
+      {
+        "recipeId": "r_bowl_vita_orez",
+        "servings": 1
+      }
+    ],
+    "totals": {
+      "items": 12,
+      "estimatedCostRON": 198.5
+    }
+  }
+}
