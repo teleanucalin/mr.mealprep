@@ -221,25 +221,26 @@ export default function LandingPage() {
         ref={pricingRef}
         className={cn(
           isMobile 
-            ? "h-screen snap-start snap-always flex flex-col justify-center px-6 pb-24"
+            ? "h-screen snap-start snap-always flex flex-col px-6 pt-6 pb-24"
             : "space-y-12 py-8 transition-all duration-1000",
           !isMobile && (isPricingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10")
         )}
       >
-        <h2 className={cn("text-center", isMobile ? "text-2xl mb-6" : "mb-8")}>
+        <h2 className={cn("text-center flex-shrink-0", isMobile ? "text-xl mb-6" : "mb-8")}>
           {COPY.landing.pricing.title}
         </h2>
         
         <div className={cn(
           "mx-auto",
-          isMobile ? "space-y-4 w-full max-h-[70vh] overflow-y-auto pb-4" : "grid md:grid-cols-3 gap-8 max-w-6xl"
+          isMobile ? "space-y-2.5 w-full flex-1 flex flex-col justify-start overflow-hidden" : "grid md:grid-cols-3 gap-8 max-w-6xl"
         )}>
           {/* Free Plan */}
           <Card
+            onClick={() => isMobile && setExpandedPlan("free")}
             className={cn(
-              "transition-all duration-300 relative overflow-hidden group",
+              "transition-all duration-300 relative overflow-hidden group flex-shrink-0",
               isMobile 
-                ? "hover:shadow-md"
+                ? "cursor-pointer hover:shadow-md active:scale-[0.98]"
                 : "hover:shadow-lg hover:scale-[1.02]",
               !isMobile && isPricingVisible && "animate-in slide-in-from-bottom duration-500"
             )}
@@ -247,22 +248,19 @@ export default function LandingPage() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-transparent to-muted/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
-            <CardHeader className="relative">
-              <CardTitle className={isMobile ? "text-xl" : "text-2xl"}>
+            <CardHeader className={cn("relative", isMobile && "pb-2")}>
+              <CardTitle className={isMobile ? "text-lg" : "text-2xl"}>
                 {SUBSCRIPTION_PLANS.free.name}
               </CardTitle>
-              <div className={cn("font-bold mt-2 mb-1", isMobile ? "text-2xl" : "text-4xl")}>
+              <div className={cn("font-bold mt-1", isMobile ? "text-xl" : "text-4xl")}>
                 Gratuit
               </div>
               
               {isMobile && (
-                <button
-                  onClick={() => setExpandedPlan("free")}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 mt-2"
-                >
+                <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
                   Mai multe detalii
                   <ChevronRight className="h-3 w-3" />
-                </button>
+                </p>
               )}
               
               {!isMobile && (
@@ -285,20 +283,20 @@ export default function LandingPage() {
               </CardContent>
             )}
             
-            <CardFooter className="relative pt-4">
-              <Link href="/onboarding" className="w-full">
+            <CardFooter className={cn("relative", isMobile ? "pt-2" : "pt-4")}>
+              <Link href="/onboarding" className="w-full" onClick={(e) => isMobile && e.stopPropagation()}>
                 <Button 
                   variant="outline" 
-                  size={isMobile ? "default" : "lg"}
+                  size={isMobile ? "sm" : "lg"}
                   className={cn(
                     "w-full gap-2 transition-all duration-200",
                     isMobile 
-                      ? "hover:bg-primary hover:text-primary-foreground"
+                      ? "hover:bg-primary hover:text-primary-foreground h-9"
                       : "group-hover:border-primary group-hover:text-primary"
                   )}
                 >
                   Începe gratuit
-                  <Zap className={isMobile ? "h-4 w-4" : "h-5 w-5"} />
+                  <Zap className={isMobile ? "h-3.5 w-3.5" : "h-5 w-5"} />
                 </Button>
               </Link>
             </CardFooter>
@@ -306,11 +304,12 @@ export default function LandingPage() {
 
           {/* Pro Plan - EMPHASIZED */}
           <Card
+            onClick={() => isMobile && setExpandedPlan("pro")}
             className={cn(
-              "transition-all duration-300 relative overflow-hidden group",
+              "transition-all duration-300 relative overflow-hidden group flex-shrink-0",
               "border-primary border-2 shadow-xl",
               isMobile
-                ? "hover:shadow-lg"
+                ? "cursor-pointer hover:shadow-lg active:scale-[0.98]"
                 : "hover:shadow-2xl hover:scale-105",
               !isMobile && isPricingVisible && "animate-in slide-in-from-bottom duration-500"
             )}
@@ -321,32 +320,29 @@ export default function LandingPage() {
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
             )}
             
-            <CardHeader className="relative">
+            <CardHeader className={cn("relative", isMobile && "pb-2")}>
               <Badge className={cn(
-                "w-fit shadow-md px-3",
-                isMobile ? "text-xs py-1 mb-2" : "text-sm py-1.5 mb-3"
+                "w-fit shadow-md px-2",
+                isMobile ? "text-[10px] py-0.5 mb-1" : "text-sm px-3 py-1.5 mb-3"
               )}>
                 ⭐ Cel mai popular
               </Badge>
               
-              <CardTitle className={isMobile ? "text-xl" : "text-2xl"}>
+              <CardTitle className={isMobile ? "text-lg" : "text-2xl"}>
                 {SUBSCRIPTION_PLANS.pro.name}
               </CardTitle>
-              <div className={cn("font-bold text-primary mt-2 mb-1", isMobile ? "text-2xl" : "text-4xl")}>
+              <div className={cn("font-bold text-primary mt-1", isMobile ? "text-xl" : "text-4xl")}>
                 {SUBSCRIPTION_PLANS.pro.price} RON
-                <span className={cn("font-normal text-muted-foreground", isMobile ? "text-sm" : "text-lg")}>
+                <span className={cn("font-normal text-muted-foreground", isMobile ? "text-xs" : "text-lg")}>
                   /lună
                 </span>
               </div>
               
               {isMobile && (
-                <button
-                  onClick={() => setExpandedPlan("pro")}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 mt-2"
-                >
+                <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
                   Mai multe detalii
                   <ChevronRight className="h-3 w-3" />
-                </button>
+                </p>
               )}
               
               {!isMobile && (
@@ -369,20 +365,20 @@ export default function LandingPage() {
               </CardContent>
             )}
             
-            <CardFooter className="relative pt-4">
-              <Link href="/onboarding" className="w-full">
+            <CardFooter className={cn("relative", isMobile ? "pt-2" : "pt-4")}>
+              <Link href="/onboarding" className="w-full" onClick={(e) => isMobile && e.stopPropagation()}>
                 <Button 
-                  size={isMobile ? "default" : "lg"}
+                  size={isMobile ? "sm" : "lg"}
                   className={cn(
                     "w-full gap-2 transition-all duration-300",
                     isMobile 
-                      ? "shadow-md hover:shadow-lg"
+                      ? "shadow-md hover:shadow-lg h-9"
                       : "shadow-xl hover:shadow-2xl group/btn"
                   )}
                 >
                   Activează trial 7 zile
                   <Zap className={cn(
-                    isMobile ? "h-4 w-4" : "h-5 w-5",
+                    isMobile ? "h-3.5 w-3.5" : "h-5 w-5",
                     !isMobile && "group-hover/btn:scale-110 transition-transform"
                   )} />
                 </Button>
@@ -392,11 +388,12 @@ export default function LandingPage() {
 
           {/* Gourmet Plan */}
           <Card
+            onClick={() => isMobile && setExpandedPlan("gourmet")}
             className={cn(
-              "transition-all duration-300 relative overflow-hidden group",
+              "transition-all duration-300 relative overflow-hidden group flex-shrink-0",
               "border-amber-500/30",
               isMobile
-                ? "hover:shadow-md"
+                ? "cursor-pointer hover:shadow-md active:scale-[0.98]"
                 : "hover:shadow-xl hover:scale-[1.03]",
               !isMobile && isPricingVisible && "animate-in slide-in-from-bottom duration-500"
             )}
@@ -404,28 +401,25 @@ export default function LandingPage() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
-            <CardHeader className="relative">
-              <div className="flex items-center gap-2 mb-1">
-                <CardTitle className={isMobile ? "text-xl" : "text-2xl"}>
+            <CardHeader className={cn("relative", isMobile && "pb-2")}>
+              <div className="flex items-center gap-2">
+                <CardTitle className={isMobile ? "text-lg" : "text-2xl"}>
                   {SUBSCRIPTION_PLANS.gourmet.name}
                 </CardTitle>
-                <span className={isMobile ? "text-xl" : "text-2xl"}>👑</span>
+                <span className={isMobile ? "text-lg" : "text-2xl"}>👑</span>
               </div>
-              <div className={cn("font-bold mt-2 mb-1", isMobile ? "text-2xl" : "text-4xl")}>
+              <div className={cn("font-bold mt-1", isMobile ? "text-xl" : "text-4xl")}>
                 {SUBSCRIPTION_PLANS.gourmet.price} RON
-                <span className={cn("font-normal text-muted-foreground", isMobile ? "text-sm" : "text-lg")}>
+                <span className={cn("font-normal text-muted-foreground", isMobile ? "text-xs" : "text-lg")}>
                   /lună
                 </span>
               </div>
               
               {isMobile && (
-                <button
-                  onClick={() => setExpandedPlan("gourmet")}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 mt-2"
-                >
+                <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
                   Mai multe detalii
                   <ChevronRight className="h-3 w-3" />
-                </button>
+                </p>
               )}
               
               {!isMobile && (
@@ -448,20 +442,20 @@ export default function LandingPage() {
               </CardContent>
             )}
             
-            <CardFooter className="relative pt-4">
-              <Link href="/onboarding" className="w-full">
+            <CardFooter className={cn("relative", isMobile ? "pt-2" : "pt-4")}>
+              <Link href="/onboarding" className="w-full" onClick={(e) => isMobile && e.stopPropagation()}>
                 <Button 
                   variant="outline"
-                  size={isMobile ? "default" : "lg"}
+                  size={isMobile ? "sm" : "lg"}
                   className={cn(
                     "w-full gap-2 transition-all duration-200",
                     isMobile
-                      ? "border-amber-500/50 hover:bg-amber-500/20 hover:border-amber-500"
+                      ? "border-amber-500/50 hover:bg-amber-500/20 hover:border-amber-500 h-9"
                       : "border-amber-500/50 hover:bg-amber-500/10 hover:border-amber-500"
                   )}
                 >
                   Activează trial 7 zile
-                  <Zap className={isMobile ? "h-4 w-4" : "h-5 w-5"} />
+                  <Zap className={isMobile ? "h-3.5 w-3.5" : "h-5 w-5"} />
                 </Button>
               </Link>
             </CardFooter>
