@@ -1,0 +1,25 @@
+{
+  "name": "Mr. MealPrep - Planul tău alimentar optimizat de AI",
+  "short_name": "MealPrep",
+  "description": "Planul tău alimentar, optimizat de AI. Macro-uri atinse fără calcule.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fafaf9",
+  "theme_color": "#f97316",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
+
