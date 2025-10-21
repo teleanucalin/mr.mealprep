@@ -59,7 +59,7 @@ export async function POST(request: Request) {
           warnings,
         };
       })
-      .sort((a, b) => b.matchScore - a.matchScore)
+      .sort((a: SubstitutionOption, b: SubstitutionOption) => b.matchScore - a.matchScore)
       .slice(0, 4); // Top 4 substituții
 
     return NextResponse.json({ substitutions });
