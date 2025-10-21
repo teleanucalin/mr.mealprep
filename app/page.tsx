@@ -61,12 +61,12 @@ export default function LandingPage() {
 
   return (
     <div className={cn(
-      isMobile ? "snap-y snap-mandatory h-screen overflow-y-scroll -mx-4 -my-6" : "space-y-24"
+      isMobile ? "snap-y h-[100dvh] overflow-y-auto" : "space-y-24"
     )}>
       {/* Hero Section - Fullscreen pe mobil */}
       <section className={cn(
-        "text-center flex flex-col items-center justify-center",
-        isMobile ? "h-screen snap-start snap-always px-6" : "space-y-8 py-16 slide-up"
+        "text-center grid place-items-center",
+        isMobile ? "min-h-[100dvh] snap-start snap-normal px-6" : "space-y-8 py-16 slide-up"
       )}>
         <div className="flex justify-center mb-6">
           <div className="relative">
@@ -78,12 +78,12 @@ export default function LandingPage() {
           </div>
         </div>
         
-        <h1 className={cn("mb-6", isMobile && "text-3xl")}>
+        <h1 className={cn("mb-6 text-balance", isMobile && "text-3xl")}>
           {COPY.landing.hero.title}
         </h1>
         
         <p className={cn(
-          "text-muted-foreground max-w-2xl mx-auto",
+          "text-muted-foreground max-w-2xl mx-auto text-balance",
           isMobile ? "text-base px-4" : "text-lg md:text-xl"
         )}>
           {COPY.landing.hero.subtitle}
@@ -110,10 +110,10 @@ export default function LandingPage() {
       {/* How It Works - Fullscreen pe mobil */}
       <section className={cn(
         isMobile 
-          ? "h-screen snap-start snap-always flex flex-col justify-center px-6 pb-20" 
+          ? "min-h-[100dvh] snap-start snap-normal grid place-items-center px-6 pb-20" 
           : "space-y-12 fade-in"
       )}>
-        <h2 className={cn("text-center mb-8", isMobile && "text-2xl")}>
+        <h2 className={cn("text-center mb-8 text-balance", isMobile && "text-2xl")}>
           {COPY.landing.howItWorks.title}
         </h2>
         
@@ -232,14 +232,14 @@ export default function LandingPage() {
         ref={pricingRef}
         className={cn(
           isMobile 
-            ? "h-screen snap-start snap-always flex flex-col px-6 pb-20"
+            ? "min-h-[100dvh] snap-start snap-normal grid place-items-center px-6 pb-20"
             : "space-y-12 py-8 transition-all duration-1000",
           !isMobile && (isPricingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10")
         )}
         style={isMobile ? { paddingTop: viewportHeight < 700 ? '1rem' : '1.5rem' } : {}}
       >
         <h2 className={cn(
-          "text-center flex-shrink-0",
+          "text-center flex-shrink-0 text-balance",
           isMobile ? `${titleSize} mb-3` : "mb-8"
         )}>
           {COPY.landing.pricing.title}
