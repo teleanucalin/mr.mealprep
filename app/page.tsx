@@ -9,6 +9,7 @@ import { ChefHat, Zap, Check, ArrowDown, Sparkles, ChevronRight, X } from "lucid
 import { COPY } from "@/lib/copy";
 import { SUBSCRIPTION_PLANS } from "@/store/useSubscription";
 import { cn } from "@/lib/utils";
+import { ScrollSnap } from "@/components/ScrollSnap";
 import { SubscriptionTier } from "@/lib/types";
 
 export default function LandingPage() {
@@ -59,10 +60,345 @@ export default function LandingPage() {
     pricingRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  if (isMobile) {
+    return (
+      <ScrollSnap enabled className="-mx-4 -my-6 px-4 py-6">
+        {/* Hero Section - Fullscreen pe mobil */}
+        <section
+          data-snap-section="true"
+          className={cn(
+            "text-center grid place-items-center min-h-[100dvh] snap-start snap-normal px-6"
+          )}
+        >
+          <div className="flex justify-center mb-6">
+            <div className="relative">
+              <ChefHat className={cn(
+                "text-primary animate-in zoom-in duration-500",
+                "h-24 w-24"
+              )} />
+              <div className="absolute -top-1 -right-1 w-6 h-6 bg-primary rounded-full animate-pulse" />
+            </div>
+          </div>
+
+          <h1 className={cn("mb-6 text-3xl text-balance")}>
+            {COPY.landing.hero.title}
+          </h1>
+
+          <p className={cn(
+            "text-muted-foreground max-w-2xl mx-auto text-balance text-base px-4"
+          )}>
+            {COPY.landing.hero.subtitle}
+          </p>
+
+          <div className="mt-12 flex flex-col items-center gap-3 animate-bounce">
+            <span className="text-sm text-muted-foreground">Scroll pentru mai multe</span>
+            <ArrowDown className="h-6 w-6 text-primary" />
+          </div>
+        </section>
+
+        {/* How It Works - Fullscreen pe mobil */}
+        <section
+          data-snap-section="true"
+          className="min-h-[100dvh] snap-start snap-normal grid place-items-center px-6 pb-20"
+        >
+          <h2 className="text-center mb-8 text-2xl text-balance">
+            {COPY.landing.howItWorks.title}
+          </h2>
+
+          <div className="space-y-4 max-w-5xl mx-auto">
+            <Card className="hover:shadow-lg transition-all" style={{ animationDelay: '0ms' }}>
+              <CardHeader className="pb-3">
+                <div className="flex items-center justify-center rounded-full bg-primary/10 text-primary mx-auto ring-4 ring-primary/5 w-12 h-12 mb-2">
+                  <span className="font-bold text-2xl">1</span>
+                </div>
+                <CardTitle className="text-center text-base">
+                  {COPY.landing.howItWorks.step1.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <CardDescription className="text-center text-xs">
+                  {COPY.landing.howItWorks.step1.description}
+                </CardDescription>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-all" style={{ animationDelay: '100ms' }}>
+              <CardHeader className="pb-3">
+                <div className="flex items-center justify-center rounded-full bg-primary/10 text-primary mx-auto ring-4 ring-primary/5 w-12 h-12 mb-2">
+                  <span className="font-bold text-2xl">2</span>
+                </div>
+                <CardTitle className="text-center text-base">
+                  {COPY.landing.howItWorks.step2.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <CardDescription className="text-center text-xs">
+                  {COPY.landing.howItWorks.step2.description}
+                </CardDescription>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-all" style={{ animationDelay: '200ms' }}>
+              <CardHeader className="pb-3">
+                <div className="flex items-center justify-center rounded-full bg-primary/10 text-primary mx-auto ring-4 ring-primary/5 w-12 h-12 mb-2">
+                  <span className="font-bold text-2xl">3</span>
+                </div>
+                <CardTitle className="text-center text-base">
+                  {COPY.landing.howItWorks.step3.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <CardDescription className="text-center text-xs">
+                  {COPY.landing.howItWorks.step3.description}
+                </CardDescription>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="flex flex-col items-center gap-2 mt-6 animate-bounce">
+            <span className="text-xs text-muted-foreground">Continuă scroll</span>
+            <ArrowDown className="h-5 w-5 text-primary" />
+          </div>
+        </section>
+
+        {/* Pricing Section - Fullscreen pe mobil */}
+        <section
+          data-snap-section="true"
+          ref={pricingRef}
+          className="min-h-[100dvh] snap-start snap-normal grid place-items-center px-6 pb-20"
+          style={{ paddingTop: viewportHeight < 700 ? '1rem' : '1.5rem' }}
+        >
+          <h2 className={cn("text-center flex-shrink-0 text-balance", `${titleSize} mb-3`)}>
+            {COPY.landing.pricing.title}
+          </h2>
+
+          <div className="mx-auto w-full space-y-2 flex-1 flex flex-col justify-center">
+            {/* Free Plan */}
+            <Card
+              onClick={() => setExpandedPlan("free")}
+              className={cn(
+                "transition-all duration-300 relative overflow-hidden group flex-shrink-0 flex flex-col",
+                "cursor-pointer hover:shadow-md active:scale-[0.98]"
+              )}
+              style={{ height: cardHeight, animationDelay: '0ms' }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent to-muted/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              <CardHeader className="relative flex-1 flex flex-col justify-center pb-1 pt-3">
+                <CardTitle className={titleSize}>
+                  {SUBSCRIPTION_PLANS.free.name}
+                </CardTitle>
+                <div className={cn("font-bold mt-1", priceSize)}>
+                  Gratuit
+                </div>
+                <p className={cn("text-muted-foreground flex items-center gap-1 mt-1", viewportHeight < 700 ? "text-[10px]" : "text-xs")}>
+                  Mai multe detalii
+                  <ChevronRight className="h-3 w-3" />
+                </p>
+              </CardHeader>
+
+              <CardFooter className="relative flex-shrink-0 pt-1 pb-3">
+                <Link href="/onboarding" className="w-full" onClick={(e) => e.stopPropagation()}>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className={cn(
+                      "w-full gap-2 transition-all duration-200",
+                      viewportHeight < 700 ? "h-8 text-xs" : "h-9"
+                    )}
+                  >
+                    Începe gratuit
+                    <Zap className={viewportHeight < 700 ? "h-3 w-3" : "h-3.5 w-3.5"} />
+                  </Button>
+                </Link>
+              </CardFooter>
+            </Card>
+
+            {/* Pro Plan */}
+            <Card
+              onClick={() => setExpandedPlan("pro")}
+              className={cn(
+                "transition-all duration-300 relative overflow-hidden group flex-shrink-0 flex flex-col",
+                "border-primary border-2 shadow-xl cursor-pointer hover:shadow-lg active:scale-[0.98]"
+              )}
+              style={{ height: cardHeight, animationDelay: '100ms' }}
+            >
+              <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl -translate-y-20 translate-x-20 group-hover:scale-150 transition-transform duration-500" />
+
+              <CardHeader className="relative flex-1 flex flex-col justify-center pb-1 pt-3">
+                <Badge className={cn("w-fit shadow-md mb-1", viewportHeight < 700 ? "text-[9px] px-1.5 py-0.5" : "text-[10px] px-2 py-0.5")}>⭐ Cel mai popular</Badge>
+                <CardTitle className={titleSize}>
+                  {SUBSCRIPTION_PLANS.pro.name}
+                </CardTitle>
+                <div className={cn("font-bold text-primary mt-1", priceSize)}>
+                  {SUBSCRIPTION_PLANS.pro.price} RON
+                  <span className={cn("font-normal text-muted-foreground", viewportHeight < 700 ? "text-[10px]" : "text-xs")}>/lună</span>
+                </div>
+                <p className={cn("text-muted-foreground flex items-center gap-1 mt-1", viewportHeight < 700 ? "text-[10px]" : "text-xs")}>
+                  Mai multe detalii
+                  <ChevronRight className="h-3 w-3" />
+                </p>
+              </CardHeader>
+
+              <CardFooter className="relative flex-shrink-0 pt-1 pb-3">
+                <Link href="/onboarding" className="w-full" onClick={(e) => e.stopPropagation()}>
+                  <Button 
+                    size="sm"
+                    className={cn("w-full gap-2 transition-all duration-300", viewportHeight < 700 ? "h-8 text-xs" : "h-9")}
+                  >
+                    Activează trial 7 zile
+                    <Zap className={viewportHeight < 700 ? "h-3 w-3" : "h-3.5 w-3.5"} />
+                  </Button>
+                </Link>
+              </CardFooter>
+            </Card>
+
+            {/* Gourmet Plan */}
+            <Card
+              onClick={() => setExpandedPlan("gourmet")}
+              className={cn(
+                "transition-all duration-300 relative overflow-hidden group flex-shrink-0 flex flex-col",
+                "border-amber-500/30 cursor-pointer hover:shadow-md active:scale-[0.98]"
+              )}
+              style={{ height: cardHeight, animationDelay: '200ms' }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <CardHeader className="relative flex-1 flex flex-col justify-center pb-1 pt-3">
+                <div className="flex items-center gap-2">
+                  <CardTitle className={titleSize}>
+                    {SUBSCRIPTION_PLANS.gourmet.name}
+                  </CardTitle>
+                  <span className={viewportHeight < 700 ? "text-base" : "text-lg"}>👑</span>
+                </div>
+                <div className={cn("font-bold mt-1", priceSize)}>
+                  {SUBSCRIPTION_PLANS.gourmet.price} RON
+                  <span className={cn("font-normal text-muted-foreground", viewportHeight < 700 ? "text-[10px]" : "text-xs")}>/lună</span>
+                </div>
+                <p className={cn("text-muted-foreground flex items-center gap-1 mt-1", viewportHeight < 700 ? "text-[10px]" : "text-xs")}>
+                  Mai multe detalii
+                  <ChevronRight className="h-3 w-3" />
+                </p>
+              </CardHeader>
+
+              <CardFooter className="relative flex-shrink-0 pt-1 pb-3">
+                <Link href="/onboarding" className="w-full" onClick={(e) => e.stopPropagation()}>
+                  <Button 
+                    variant="outline"
+                    size="sm"
+                    className={cn(
+                      "w-full gap-2 transition-all duration-200 border-amber-500/50 hover:bg-amber-500/20 hover:border-amber-500",
+                      viewportHeight < 700 ? "h-8 text-xs" : "h-9"
+                    )}
+                  >
+                    Activează trial 7 zile
+                    <Zap className={viewportHeight < 700 ? "h-3 w-3" : "h-3.5 w-3.5"} />
+                  </Button>
+                </Link>
+              </CardFooter>
+            </Card>
+          </div>
+        </section>
+
+        {/* Expanded details overlay - păstrat */}
+        {expandedPlan && (
+          <div className="fixed inset-0 z-50 bg-background animate-in slide-in-from-right duration-300">
+            <div className="h-full overflow-y-auto pb-20">
+              <div className="container mx-auto px-4 py-6">
+                <div className="flex items-center justify-between mb-6">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setExpandedPlan(null)}
+                    className="gap-2"
+                  >
+                    ← Înapoi
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setExpandedPlan(null)}
+                  >
+                    <X className="h-5 w-5" />
+                  </Button>
+                </div>
+
+                <Card className={cn("scale-in", expandedPlan === "pro" && "border-primary border-2")}> 
+                  <CardHeader className="text-center">
+                    {expandedPlan === "pro" && (
+                      <Badge className="w-fit mx-auto mb-3">⭐ Cel mai popular</Badge>
+                    )}
+                    {expandedPlan === "gourmet" && (
+                      <div className="mb-2 text-3xl">👑</div>
+                    )}
+                    <CardTitle className="text-3xl mb-3">
+                      {SUBSCRIPTION_PLANS[expandedPlan].name}
+                    </CardTitle>
+                    <div className="text-4xl font-bold text-primary mb-2">
+                      {SUBSCRIPTION_PLANS[expandedPlan].price === 0 ? "Gratuit" : `${SUBSCRIPTION_PLANS[expandedPlan].price} RON`}
+                      {SUBSCRIPTION_PLANS[expandedPlan].price > 0 && (
+                        <span className="text-base font-normal text-muted-foreground">/lună</span>
+                      )}
+                    </div>
+                    {SUBSCRIPTION_PLANS[expandedPlan].price > 0 && (
+                      <p className="text-sm text-muted-foreground">
+                        sau {SUBSCRIPTION_PLANS[expandedPlan].annualPrice} RON/an (-20%)
+                      </p>
+                    )}
+                  </CardHeader>
+
+                  <CardContent className="space-y-6">
+                    <div>
+                      <h3 className="font-semibold mb-4">Ce primești:</h3>
+                      <ul className="space-y-3">
+                        {SUBSCRIPTION_PLANS[expandedPlan].features.map((feature, idx) => (
+                          <li
+                            key={idx}
+                            className="flex items-start gap-3 text-sm animate-in slide-in-from-left duration-300"
+                            style={{ animationDelay: `${idx * 30}ms` }}
+                          >
+                            <Check className="h-5 w-5 text-success mt-0.5 flex-shrink-0" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="border-t pt-4">
+                      <h3 className="font-semibold mb-3 text-sm">Detalii:</h3>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">Rețete/săptămână</span>
+                          <span className="font-semibold">{SUBSCRIPTION_PLANS[expandedPlan].limits.recipesPerWeek}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">Profiluri</span>
+                          <span className="font-semibold">{SUBSCRIPTION_PLANS[expandedPlan].limits.profiles}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+
+                  <CardFooter>
+                    <Link href="/onboarding" className="w-full">
+                      <Button size="lg" className="w-full gap-2 shadow-lg">
+                        {expandedPlan === "free" ? "Începe gratuit" : "Activează trial 7 zile"}
+                        <Zap className="h-5 w-5" />
+                      </Button>
+                    </Link>
+                  </CardFooter>
+                </Card>
+              </div>
+            </div>
+          </div>
+        )}
+      </ScrollSnap>
+    );
+  }
+
+  // Desktop fallback: layout existent
   return (
-    <div className={cn(
-      isMobile ? "snap-y h-[100dvh] overflow-y-auto" : "space-y-24"
-    )}>
+    <div className={cn("space-y-24")}> 
       {/* Hero Section - Fullscreen pe mobil */}
       <section className={cn(
         "text-center grid place-items-center",

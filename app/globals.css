@@ -242,6 +242,16 @@
   }
 }
 
+/* Smooth scroll for snap containers (respect reduced motion) */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+}
+
 /* Bottom nav safe area for mobile */
 .pb-nav-safe {
   padding-bottom: calc(env(safe-area-inset-bottom) + 4rem);
