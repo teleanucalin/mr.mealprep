@@ -1,0 +1,104 @@
+# Premise, miză și tonul cărții
+
+Norman susține că atunci când ne poticnim în lucruri banale (uși, robinete, cuptoare, ceasuri digitale) problema nu e „utilizatorul nepriceput”, ci designul care nu ține cont de psihologia oamenilor. Soluția: **human-centered design (HCD)** – a pune nevoile, capabilitățile și modul real de comportament al oamenilor înaintea tehnologiei și apoi a proiecta pentru ele. Scopul nu este doar „utilizabilitatea”, ci o **experiență** coerentă, inteligibilă și plăcută, în care cogniția și emoția sunt strâns legate; cheia e **descoperibilitatea** (să știi ce poți face) și **înțelegerea** (cum funcționează, ce înseamnă stările și rezultatele). 
+
+---
+
+# Cap. 1 – Psihopatologia obiectelor cotidiene: principiile fundamentale
+
+Norman introduce arsenalul psihologic care face un obiect „explicativ prin sine”:
+
+* **Affordances** (posibilități de acțiune rezultate din relația dintre obiect și agentul uman; nu sunt o proprietate intrinsecă, ci o relație). Un scaun „afordă” așezatul, sticla „afordă” vizualizarea, dar „anti-afordă” trecerea obiectelor. 
+* **Signifiers** (semnale perceptibile despre *unde* și *cum* să acționezi – plăcuța „push”, forma mânerului, pictogramele; în design contează mai mult decât affordances, pentru că fac acțiunea vizibilă). 
+* **Mappings** (corespondența firească între controale și efecte – ex.: butonul din stânga aprinde lumina din stânga). 
+* **Feedback** (să știu *ce* s-a întâmplat după acțiune) și **conceptual model** (modelul mental pe care ți-l sugerează obiectul despre cum funcționează). Un foarfece își „arată” modelul (găuri, lame, mapări), pe când un ceas digital cu 5 butoane fără indicii nu ți-l arată deloc. 
+
+---
+
+# Cap. 2 – Psihologia acțiunilor cotidiene
+
+Două „golfuri” separă oamenii de sistem:
+
+* **Gulf of Execution** – cât de greu e să îți dai seama *ce* să faci; se micșorează cu signifiers, constraints, mappings și un model conceptual bun.
+* **Gulf of Evaluation** – cât de greu e să interpretezi *ce s-a întâmplat*; se micșorează cu feedback + model conceptual. 
+
+Norman mapează comportamentul pe **Șapte etape ale acțiunii** (formarea scopului → planificare → specificare → executare → percepere rezultat → interpretare → comparare cu scopul). Modelul devine o listă de verificare pentru design și duce la **șapte principii**: descoperibilitate, feedback, model conceptual, affordances, signifiers, mappings și *feedforward* (indiciile *înainte* de acțiune).   
+
+Idei cheie adiționale:
+
+* Mult din gândire este **subconștientă**; greșelile apar chiar și la experți, deci designul trebuie să *presupună* erori.
+* Comportamentul poate fi **goal-driven** sau **event-driven** (o oportunitate din mediu „dezlănțuie” acțiunea) – util în a înțelege când să dai semnale și când să trimiți notificări. 
+
+---
+
+# Cap. 3 – Knowledge in the Head vs. in the World
+
+Oamenii folosesc:
+
+* **Cunoașterea în cap**: memorii, reguli culturale, analogii.
+* **Cunoașterea în lume**: semnale, structuri, etichete, mapări naturale.
+
+Designul bun **transferă** povara din memorie în lume (să nu fie nevoie să memorezi „moduri” criptice). **Natural mapping** reduce ambiguitatea (de ex. aranjarea comutatoarelor precum luminile). Norman subliniază și rolul **culturii**: ceea ce e „natural” într-o cultură poate fi ne-natural în alta.  
+
+---
+
+# Cap. 4 – Knowing What to Do: Constraints, Discoverability & Feedback
+
+Norman sistematizează **patru tipuri de constrângeri** care limitează opțiunile greșite și ghidează corect:
+
+1. **Physical** (forma împiedică inserția greșită; baterii proiectate să meargă indiferent de orientare sau să nu poată fi montate greșit).
+2. **Cultural** (norme și convenții — ex.: roșu la stop spate).
+3. **Semantic** (sensul situației — parbrizul trebuie să fie în fața riderului).
+4. **Logical** (doar o variantă rămâne posibilă — „piesa rămasă numai într-un loc încape”).
+   Exemplul clasic: motocicleta Lego – toate cele patru tipuri lucrează împreună, astfel încât o poți asambla fără instrucțiuni.   
+
+Concluzie: **constrângerile bine alese fac descoperibilitatea emergentă** (utilizatorul „vede” ce are sens). 
+
+---
+
+# Cap. 5 – Human Error? No, Bad Design
+
+„Eroarea umană” este inevitabilă; proiectează ca atare:
+
+* **Slips** (intenția e bună, execuția greșită):
+  – *Action-based* (acțiune greșită aplicată obiectului corect).
+  – *Memory-lapse* (uiți să faci/verifici ceva).
+* **Mistakes** (scop/plan greșit), de trei tipuri: **rule-based**, **knowledge-based**, **memory-lapse**.
+  Implicație: strategii diferite de design pentru fiecare.  
+
+Mai departe:
+
+* **Resilience engineering** – organizațiile sigure anticipează potențialul de eșec, investesc în prevenție și în „marje de manevră” (redundanță, semnalizare bună, moduri de avarie clare). 
+* **Paradoxul automatizării** – automatizarea reduce erorile tipice, dar când *eșuează*, eșecurile sunt rare și **catastrofale**; cu cât preia mai mult „rutină”, cu atât operatorul uman e mai **decuplat** și mai puțin pregătit să intervină în criză. Proiectează interfețe care mențin *implicarea* operatorului și fac tranziția om-mașină clară. 
+
+---
+
+# Cap. 6 – Design Thinking (HCD în practică)
+
+* Înainte să „rezolvi”, asigură-te că **problema** este cea corectă (divergi-convergi → **Double-Diamond**: descoperă/definește problema, apoi explorează/dezvolți soluții).
+* **Proces HCD**: observație contextuală → definire cerințe → ideare (brainstorming, prototipuri rapide) → testare iterativă.
+* **Realitatea organizațională**: bugete, termene, competiții interne; designul trebuie să negocieze cu marketing, vânzări, legal, inginerie; **datele de piață (big data)** și **cercetarea de design** se completează: primele arată ce cumpără oamenii, a doua ce *au nevoie* cu adevărat.  
+
+---
+
+# Cap. 7 – Design în lumea afacerilor
+
+* **Featuritis/creeping featurism**: tendința de a adăuga funcții până când produsul devine confuz; standardizarea și convențiile reduc confuzia.
+* **Inovație**: **incrementală** (cea mai frecventă și adecvată HCD) vs. **radicală** (rară, riscantă, adoptată lent).
+* **Obligația morală a designerilor**: să reducă erorile, să optimizeze siguranța și să proiecteze pentru diversitatea reală a utilizatorilor. (sumar pe baza structurii și temelor capitolului) 
+
+---
+
+# Idei operaționale (cheat-sheet aplicabil)
+
+1. **Fă-l să se explice singur**: semnale clare (signifiers), mapări naturale, feedback instant și inteligibil. 
+2. **Scoate memoria din ecuație**: pune „cunoașterea în lume” (etichete, pași ghidați, constrângeri). 
+3. **Proiectează pentru erori**: prevenire (constrângeri), detectare (stări vizibile), atenuare (undo, confirmări, salvare automată), „moduri sigure”. 
+4. **Păstrează omul în buclă**: chiar și cu automatizare, menține contextul, *hand-off*-uri clare, alerte explicative. 
+5. **Verifică problema înaintea soluției**: observă, întreabă „de ce?” până la rădăcina scopului, iterează scurt și des.  
+
+---
+
+# Concluzie
+
+Cartea rămâne un ghid practic despre cum să transformi tehnologia în **colaborator** al omului, nu în obstacol: proiectează pentru „mintea reală” (parțial subconștientă, limitată, emoțională), fă acțiunile posibil de **ghicit** și rezultatele ușor de **citit**, *presupune* erori și creează **sisteme reziliente**. Acolo unde designul traduce corect intențiile în acțiuni și stări, „ușile” încetează să fie „Norman doors”, iar produsele devin **firești**.  

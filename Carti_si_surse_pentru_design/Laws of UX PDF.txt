@@ -1,0 +1,88 @@
+Perfect—iată un rezumat detaliat, concentrat pe ideile esențiale și pe „cum” se aplică în design fiecare lege din „Laws of UX” (Jon Yablonski).
+
+# Panorama cărții
+
+Cartea arată cum principiile psihologiei (percepție, memorie, atenție, decizie) pot ghida deciziile de produs astfel încât interfețele să fie intuitive, eficiente și etice. Structura urmărește 10 legi/efecte de bază + două capitole de aplicare și responsabilitate. 
+
+---
+
+## 1) Jakob’s Law — utilizatorii se așteaptă la familiaritate
+
+**Idee:** oamenii vor ca site-ul/aplicația ta să funcționeze ca cele deja cunoscute; alinierea la modele mentale reduce efortul cognitiv. **Implicații:** folosește pattern-uri consacrate, schimbările majore se introduc gradual (opțiune de „opt-in” sau trecere temporară la versiunea veche). **Tehnici:** interviuri, personae; testează orice abatere de la convenții. **Exemple:** backlash la redesign-ul Snapchat; e-commerce folosește fluxuri de cumpărare standard.
+
+---
+
+## 2) Fitts’s Law — timpul de țintire depinde de mărime și distanță
+
+**Idee:** ținte mai mari și mai aproape = selecție mai rapidă. **Practici:** măriți aria de atingere (label-uri clicabile), spațiați suficient elementele (≥ ~8dp), poziționați acțiunile frecvente în zone ușor accesibile (ex. o mână pe telefon). **Nu uita:** marginile ecranului acționează ca „ținte infinite”; Reachability pe iOS e un exemplu. **Context:** provine din factorii umani și siguranța interacțiunilor (WWII → codare pe forme). 
+
+---
+
+## 3) Miller’s Law — memorie de lucru ≈ 7±2, dar contează „chunking”
+
+**Idee:** limita nu e o regulă de meniu „max 7”, ci un semnal să grupezi informația. **Practici:** fragmentează (chunking) conținutul, creează ierarhii vizuale, categorii clare, spațiu alb; scade încărcarea cognitivă. **Exemple:** formatarea numerelor de telefon, grupări în bare de unelte/filtre. 
+
+---
+
+## 4) Hick’s Law — mai multe opțiuni → decizii mai lente
+
+**Idee:** timpul deciziei crește cu numărul/complexitatea opțiunilor. **Practici:** elimină opțiunile neesențiale, sparge task-urile complexe în pași, marchează variante recomandate, folosește dezvăluire progresivă; evită „oversimplificarea” fără context (iconițe fără text). **Exemple:** filtrele după căutare (nu înainte), onboarding cu checklist. 
+
+---
+
+## 5) Postel’s Law — „conservator în ce livrezi, liberal în ce accepți”
+
+**Idee:** sistemele ar trebui să livreze ieșiri robuste, previzibile, dar să accepte intrări variate (formate, convenții culturale, device-uri). **Practici:** formulare tolerante (nume/adrese diverse), design responsive, progressive enhancement; oferă feedback clar și iertător. **Metodă:** interviuri calitative țintite. 
+
+---
+
+## 6) Peak–End Rule — ne amintim vârfurile emoționale și finalul
+
+**Idee:** evaluarea unei experiențe e dominată de cele mai intense momente și de final, nu de media. **Practici:** proiectează „momente-vârf” (ajutor, mici victorii, surprize plăcute) și finalizează fluxurile cu stări satisfăcătoare, evitând finaluri negative (erori, blocaje). **Atenție:** negativele se imprimă mai puternic, deci previno stările confuze. 
+
+---
+
+## 7) Aesthetic–Usability Effect — frumusețea „pare” mai ușor de folosit
+
+**Idee:** estetica pozitivă produce percepția de utilizabilitate; utilizatorii iartă micile probleme dacă UI arată bine. **Riscuri:** estetica poate masca defecte reale în testare. **Practici:** urmărește claritatea, testarea cu utilizatori, și nu lăsa aspectul să sufoce funcționalitatea. 
+
+---
+
+## 8) Von Restorff Effect — ceea ce iese în evidență se reține
+
+**Idee:** elementele distincte sunt observate/ținute minte mai ușor. **Practici:** fă acțiunea primară vizual unică (culoare/contrast/mărime/poziție/mișcare), dar cu moderație: prea multe accente = „banner blindness” sau confuzie. **Accesibilitate:** contrast suficient, nu te baza doar pe culoare; atenție la sensibilitatea la mișcare. 
+
+---
+
+## 9) Tesler’s Law — complexitatea nu dispare, doar o muți
+
+**Idee:** orice proces are o complexitate inerentă; ori o gestionezi prin design, ori o lași în cârca utilizatorului. **Practici:** minimizează povara cognitivă pe user (auto-completări, stări implicite bune, progressive disclosure), evită „complexity bias” (tendința de a complica inutil). **Exemplu:** clienți de e-mail care sugerează destinatari.
+
+---
+
+## 10) Doherty Threshold — feedback sub ~400 ms
+
+**Idee:** productivitatea și focusul cresc când sistemul răspunde în <400 ms; dacă nu poți, optimizează percepția de viteză. **Practici:** skeleton screens, blur-up pentru imagini, indicatori de progres, micro-animații; uneori un mic delay intenționat crește încrederea (ex. verificări vizibile). **Legat de „flow”:** ritm și feedback ca să menții imersiunea. 
+
+---
+
+## 11) Cum introduci psihologia în procesul de design (operationalizare)
+
+**Tactici de echipă:** vizibilizează legile (poster/knowledge base), sesiuni „show-and-tell”, stabilește principii de design interne (directe, acționabile, memorabile), apoi mapează-le pe legile corespunzătoare (ex. „claritate > abundență de opțiuni” ↔ Hick). **Scop:** decizii mai coerente și rapide, fără a cere mereu arbitrajul unui „gatekeeper”.
+
+---
+
+## 12) „With Power Comes Responsibility” — etica designului
+
+**Idee:** aceleași principii psihologice care cresc engagementul pot modela comportamente în moduri dăunătoare. **Pattern-uri de care să fii conștient:** recompense variabile (notificări), bucle infinite (scroll/autoplay), validare socială, personalizare care creează „bulă”, default-uri care împing decizii. **Recomandări:** proiectează pentru bunăstare, acceptă fricțiune utilă (confirmări, limite sănătoase), setează implicituri pro-utilizator, include perspective diverse, integrează etica în proces, nu doar în final.
+
+---
+
+# Principii transversale de aplicare (cheat-sheet)
+
+* **Reduce cognitive load:** folosește familiaritate (Jakob), chunking (Miller), tăierea opțiunilor (Hick), progressive disclosure (Tesler).
+* **Optimizează acțiunea:** ținte mari/îndemână (Fitts), un CTA cu contrast clar (von Restorff), răspuns sub 400 ms (Doherty).
+* **Fă sistemul iertător:** acceptă intrări variate și oferă feedback clar (Postel). 
+* **Proiectează amintiri bune:** creează vârfuri pozitive și finaluri reușite (Peak–End). 
+* **Păstrează etica la masă:** evită manipularea prin pattern-uri persuasiv-dependente; fricțiune intenționată pentru siguranță și încredere. 
+
