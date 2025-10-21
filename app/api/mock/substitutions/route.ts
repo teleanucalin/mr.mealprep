@@ -16,13 +16,15 @@ export async function POST(request: Request) {
     const { recipes } = await recipesResponse.json();
 
     // Filtrează și scorează rețetele pentru substituții
-    const substitutions: SubstitutionOption[] = recipes
+    const filteredRecipes = recipes
       .filter((r: Recipe) => r.id !== originalRecipe.id)
       .filter((r: Recipe) => {
         // Același tip de masă
-        return r.mealType.some((mt) => originalRecipe.mealType.includes(mt));
-      })
-      .map((recipe: Recipe) => {
+        return r.mealType.some((mt: string) => originalRecipe.mealType.includes(mt));
+      });
+
+    const substitutionOptions: SubstitutionOption[] = filteredRecipes
+      .map((recipe: Recipe): SubstitutionOption => {
         const matchScore = calculateMatchScore(
           originalRecipe,
           recipe,
@@ -58,7 +60,9 @@ export async function POST(request: Request) {
           priceDiff,
           warnings,
         };
-      })
+      });
+
+    const substitutions = substitutionOptions
       .sort((a: SubstitutionOption, b: SubstitutionOption) => b.matchScore - a.matchScore)
       .slice(0, 4); // Top 4 substituții
 
