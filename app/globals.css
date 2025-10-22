@@ -242,6 +242,16 @@
   }
 }
 
+/* Smooth scroll for snap containers (respect reduced motion) */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+}
+
 /* Bottom nav safe area for mobile */
 .pb-nav-safe {
   padding-bottom: calc(env(safe-area-inset-bottom) + 4rem);
@@ -249,8 +259,10 @@
 
 /* Scroll snapping for mobile */
 .snap-y {
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   -webkit-overflow-scrolling: touch;
+  scroll-padding-top: 1rem;
+  scroll-padding-bottom: calc(env(safe-area-inset-bottom) + 4rem);
 }
 
 .snap-start {
@@ -259,6 +271,10 @@
 
 .snap-always {
   scroll-snap-stop: always;
+}
+
+.snap-normal {
+  scroll-snap-stop: normal;
 }
 
 /* Hide scrollbar on mobile for cleaner look */
@@ -270,6 +286,20 @@
   .snap-y {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+}
+
+/* Reduced motion: disable bouncy animations */
+@media (prefers-reduced-motion: reduce) {
+  .animate-bounce {
+    animation: none !important;
+  }
+}
+
+/* Text balance utility for nicer wrapping on headings/paragraphs */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }
 
