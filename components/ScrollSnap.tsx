@@ -13,11 +13,14 @@ type ScrollSnapProps = {
 export function ScrollSnap({ children, className, enabled = true }: ScrollSnapProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isSnappingRef = useRef(false);
 
   const sections = useMemo(() => {
     return Array.isArray(children) ? (children as React.ReactNode[]) : [children];
   }, [children]);
 
+  // Rigid snap handler - forțează snap instant după ce scroll-ul se oprește
   useEffect(() => {
     if (!enabled) return;
     const container = containerRef.current;
@@ -28,25 +31,88 @@ export function ScrollSnap({ children, className, enabled = true }: ScrollSnapPr
     );
     if (sectionEls.length === 0) return;
 
+    const snapToNearest = () => {
+      if (isSnappingRef.current) return;
+      
+      const containerTop = container.scrollTop;
+      const containerHeight = container.clientHeight;
+      const centerY = containerTop + containerHeight / 2;
+
+      // Găsește secțiunea cea mai apropiată de centru
+      let nearestIndex = 0;
+      let minDistance = Infinity;
+
+      sectionEls.forEach((section, idx) => {
+        const sectionTop = section.offsetTop;
+        const sectionCenter = sectionTop + section.clientHeight / 2;
+        const distance = Math.abs(centerY - sectionCenter);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          nearestIndex = idx;
+        }
+      });
+
+      // Snap la secțiunea cea mai apropiată
+      if (nearestIndex !== activeIndex || Math.abs(containerTop - sectionEls[nearestIndex].offsetTop) > 10) {
+        isSnappingRef.current = true;
+        setActiveIndex(nearestIndex);
+        
+        sectionEls[nearestIndex].scrollIntoView({ 
+          behavior: "smooth", 
+          block: "start" 
+        });
+
+        setTimeout(() => {
+          isSnappingRef.current = false;
+        }, 500);
+      }
+    };
+
+    const handleScroll = () => {
+      if (isSnappingRef.current) return;
+
+      // Clear timeout anterior
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+
+      // Așteaptă 150ms după ce scroll-ul se oprește, apoi snap
+      scrollTimeoutRef.current = setTimeout(snapToNearest, 150);
+    };
+
+    container.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Observer pentru a detecta secțiunea vizibilă
     const observer = new IntersectionObserver(
       (entries) => {
-        // Choose the entry with largest intersection ratio as the active section
+        if (isSnappingRef.current) return;
+        
         const mostVisible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
         if (!mostVisible) return;
         const index = sectionEls.findIndex((el) => el === mostVisible.target);
-        if (index !== -1) setActiveIndex(index);
+        if (index !== -1 && index !== activeIndex) {
+          setActiveIndex(index);
+        }
       },
       {
         root: container,
-        threshold: [0.25, 0.5, 0.75, 1.0],
+        threshold: [0.5, 0.75, 1.0],
       }
     );
 
     sectionEls.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [enabled]);
+
+    return () => {
+      observer.disconnect();
+      container.removeEventListener('scroll', handleScroll);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, [enabled, activeIndex]);
 
   const scrollTo = (index: number) => {
     const container = containerRef.current;

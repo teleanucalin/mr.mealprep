@@ -336,100 +336,100 @@ export default function LandingPage() {
             </Card>
           </div>
         </section>
+      </ScrollSnap>
 
-        {/* Expanded details overlay - păstrat */}
-        {expandedPlan && (
-          <div className="fixed inset-0 z-50 bg-background animate-in slide-in-from-right duration-300">
-            <div className="h-full overflow-y-auto pb-20">
-              <div className="container mx-auto px-4 py-6">
-                <div className="flex items-center justify-between mb-6">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setExpandedPlan(null)}
-                    className="gap-2"
-                  >
-                    ← Înapoi
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setExpandedPlan(null)}
-                  >
-                    <X className="h-5 w-5" />
-                  </Button>
-                </div>
+      {/* Expanded details overlay - AFARĂ din ScrollSnap */}
+      {expandedPlan && (
+        <div className="fixed inset-0 z-50 bg-background animate-in slide-in-from-right duration-300">
+          <div className="h-full overflow-y-auto pb-20">
+            <div className="container mx-auto px-4 py-6">
+              <div className="flex items-center justify-between mb-6">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setExpandedPlan(null)}
+                  className="gap-2"
+                >
+                  ← Înapoi
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setExpandedPlan(null)}
+                >
+                  <X className="h-5 w-5" />
+                </Button>
+              </div>
 
-                <Card className={cn("scale-in", expandedPlan === "pro" && "border-primary border-2")}> 
-                  <CardHeader className="text-center">
-                    {expandedPlan === "pro" && (
-                      <Badge className="w-fit mx-auto mb-3">⭐ Cel mai popular</Badge>
-                    )}
-                    {expandedPlan === "gourmet" && (
-                      <div className="mb-2 text-3xl">👑</div>
-                    )}
-                    <CardTitle className="text-3xl mb-3">
-                      {SUBSCRIPTION_PLANS[expandedPlan].name}
-                    </CardTitle>
-                    <div className="text-4xl font-bold text-primary mb-2">
-                      {SUBSCRIPTION_PLANS[expandedPlan].price === 0 ? "Gratuit" : `${SUBSCRIPTION_PLANS[expandedPlan].price} RON`}
-                      {SUBSCRIPTION_PLANS[expandedPlan].price > 0 && (
-                        <span className="text-base font-normal text-muted-foreground">/lună</span>
-                      )}
-                    </div>
+              <Card className={cn("scale-in", expandedPlan === "pro" && "border-primary border-2")}> 
+                <CardHeader className="text-center">
+                  {expandedPlan === "pro" && (
+                    <Badge className="w-fit mx-auto mb-3">⭐ Cel mai popular</Badge>
+                  )}
+                  {expandedPlan === "gourmet" && (
+                    <div className="mb-2 text-3xl">👑</div>
+                  )}
+                  <CardTitle className="text-3xl mb-3">
+                    {SUBSCRIPTION_PLANS[expandedPlan].name}
+                  </CardTitle>
+                  <div className="text-4xl font-bold text-primary mb-2">
+                    {SUBSCRIPTION_PLANS[expandedPlan].price === 0 ? "Gratuit" : `${SUBSCRIPTION_PLANS[expandedPlan].price} RON`}
                     {SUBSCRIPTION_PLANS[expandedPlan].price > 0 && (
-                      <p className="text-sm text-muted-foreground">
-                        sau {SUBSCRIPTION_PLANS[expandedPlan].annualPrice} RON/an (-20%)
-                      </p>
+                      <span className="text-base font-normal text-muted-foreground">/lună</span>
                     )}
-                  </CardHeader>
+                  </div>
+                  {SUBSCRIPTION_PLANS[expandedPlan].price > 0 && (
+                    <p className="text-sm text-muted-foreground">
+                      sau {SUBSCRIPTION_PLANS[expandedPlan].annualPrice} RON/an (-20%)
+                    </p>
+                  )}
+                </CardHeader>
 
-                  <CardContent className="space-y-6">
-                    <div>
-                      <h3 className="font-semibold mb-4">Ce primești:</h3>
-                      <ul className="space-y-3">
-                        {SUBSCRIPTION_PLANS[expandedPlan].features.map((feature, idx) => (
-                          <li
-                            key={idx}
-                            className="flex items-start gap-3 text-sm animate-in slide-in-from-left duration-300"
-                            style={{ animationDelay: `${idx * 30}ms` }}
-                          >
-                            <Check className="h-5 w-5 text-success mt-0.5 flex-shrink-0" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                <CardContent className="space-y-6">
+                  <div>
+                    <h3 className="font-semibold mb-4">Ce primești:</h3>
+                    <ul className="space-y-3">
+                      {SUBSCRIPTION_PLANS[expandedPlan].features.map((feature, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-start gap-3 text-sm animate-in slide-in-from-left duration-300"
+                          style={{ animationDelay: `${idx * 30}ms` }}
+                        >
+                          <Check className="h-5 w-5 text-success mt-0.5 flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                    <div className="border-t pt-4">
-                      <h3 className="font-semibold mb-3 text-sm">Detalii:</h3>
-                      <div className="space-y-2 text-sm">
-                        <div className="flex justify-between">
-                          <span className="text-muted-foreground">Rețete/săptămână</span>
-                          <span className="font-semibold">{SUBSCRIPTION_PLANS[expandedPlan].limits.recipesPerWeek}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-muted-foreground">Profiluri</span>
-                          <span className="font-semibold">{SUBSCRIPTION_PLANS[expandedPlan].limits.profiles}</span>
-                        </div>
+                  <div className="border-t pt-4">
+                    <h3 className="font-semibold mb-3 text-sm">Detalii:</h3>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Rețete/săptămână</span>
+                        <span className="font-semibold">{SUBSCRIPTION_PLANS[expandedPlan].limits.recipesPerWeek}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Profiluri</span>
+                        <span className="font-semibold">{SUBSCRIPTION_PLANS[expandedPlan].limits.profiles}</span>
                       </div>
                     </div>
-                  </CardContent>
+                  </div>
+                </CardContent>
 
-                  <CardFooter>
-                    <Link href="/onboarding" className="w-full">
-                      <Button size="lg" className="w-full gap-2 shadow-lg">
-                        {expandedPlan === "free" ? "Începe gratuit" : "Activează trial 7 zile"}
-                        <Zap className="h-5 w-5" />
-                      </Button>
-                    </Link>
-                  </CardFooter>
-                </Card>
-              </div>
+                <CardFooter>
+                  <Link href="/onboarding" className="w-full">
+                    <Button size="lg" className="w-full gap-2 shadow-lg">
+                      {expandedPlan === "free" ? "Începe gratuit" : "Activează trial 7 zile"}
+                      <Zap className="h-5 w-5" />
+                    </Button>
+                  </Link>
+                </CardFooter>
+              </Card>
             </div>
           </div>
-        )}
-      </ScrollSnap>
+        </div>
+      )}
     );
   }
 
