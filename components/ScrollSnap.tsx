@@ -61,10 +61,11 @@ export function ScrollSnap({ children, className, enabled = true }: ScrollSnapPr
     <div
       ref={containerRef}
       className={cn(
-        enabled && "snap-y h-[100dvh] overflow-y-auto",
+        enabled && "snap-y snap-mandatory h-[100dvh] overflow-y-auto",
         // provide good defaults; consumer can override via className
         className
       )}
+      style={enabled ? { overscrollBehavior: 'none' } : undefined}
     >
       {/* Sections */}
       {sections}

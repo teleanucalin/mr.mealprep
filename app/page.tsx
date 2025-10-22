@@ -22,12 +22,34 @@ export default function LandingPage() {
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
+      // Folosim window.innerHeight pentru a captura dimensiunea exactă (inclusiv când Safari ascunde toolbar-ul)
       setViewportHeight(window.innerHeight);
     };
     
     checkMobile();
+    
+    // Listener pentru resize și orientationchange (important pentru Safari)
     window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener('orientationchange', checkMobile);
+    
+    // Listener special pentru Safari când scrollezi și se schimbă toolbar-ul
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          checkMobile();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener('orientationchange', checkMobile);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   // Calculează dimensiuni adaptive pentru mobil
@@ -67,8 +89,12 @@ export default function LandingPage() {
         <section
           data-snap-section="true"
           className={cn(
-            "text-center grid place-items-center min-h-[100dvh] snap-start snap-normal px-6"
+            "text-center grid place-items-center snap-start px-6 overflow-hidden"
           )}
+          style={{ 
+            height: viewportHeight > 0 ? `${viewportHeight}px` : '100dvh',
+            scrollSnapStop: 'always'
+          }}
         >
           <div className="flex justify-center mb-6">
             <div className="relative">
@@ -99,7 +125,11 @@ export default function LandingPage() {
         {/* How It Works - Fullscreen pe mobil */}
         <section
           data-snap-section="true"
-          className="min-h-[100dvh] snap-start snap-normal grid place-items-center px-6 pb-20"
+          className="snap-start grid place-items-center px-6 overflow-hidden"
+          style={{ 
+            height: viewportHeight > 0 ? `${viewportHeight}px` : '100dvh',
+            scrollSnapStop: 'always'
+          }}
         >
           <h2 className="text-center mb-8 text-2xl text-balance">
             {COPY.landing.howItWorks.title}
@@ -165,8 +195,13 @@ export default function LandingPage() {
         <section
           data-snap-section="true"
           ref={pricingRef}
-          className="min-h-[100dvh] snap-start snap-normal grid place-items-center px-6 pb-20"
-          style={{ paddingTop: viewportHeight < 700 ? '1rem' : '1.5rem' }}
+          className="snap-start grid place-items-center px-6 overflow-hidden"
+          style={{ 
+            height: viewportHeight > 0 ? `${viewportHeight}px` : '100dvh',
+            paddingTop: viewportHeight < 700 ? '1rem' : '1.5rem',
+            paddingBottom: viewportHeight < 700 ? '1rem' : '1.5rem',
+            scrollSnapStop: 'always'
+          }}
         >
           <h2 className={cn("text-center flex-shrink-0 text-balance", `${titleSize} mb-3`)}>
             {COPY.landing.pricing.title}
@@ -226,10 +261,12 @@ export default function LandingPage() {
               <div className="absolute top-0 right-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl -translate-y-20 translate-x-20 group-hover:scale-150 transition-transform duration-500" />
 
               <CardHeader className="relative flex-1 flex flex-col justify-center pb-1 pt-3">
-                <Badge className={cn("w-fit shadow-md mb-1", viewportHeight < 700 ? "text-[9px] px-1.5 py-0.5" : "text-[10px] px-2 py-0.5")}>⭐ Cel mai popular</Badge>
-                <CardTitle className={titleSize}>
-                  {SUBSCRIPTION_PLANS.pro.name}
-                </CardTitle>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <CardTitle className={titleSize}>
+                    {SUBSCRIPTION_PLANS.pro.name}
+                  </CardTitle>
+                  <Badge className={cn("shadow-md", viewportHeight < 700 ? "text-[9px] px-1.5 py-0.5" : "text-[10px] px-2 py-0.5")}>⭐ Popular</Badge>
+                </div>
                 <div className={cn("font-bold text-primary mt-1", priceSize)}>
                   {SUBSCRIPTION_PLANS.pro.price} RON
                   <span className={cn("font-normal text-muted-foreground", viewportHeight < 700 ? "text-[10px]" : "text-xs")}>/lună</span>
@@ -672,16 +709,17 @@ export default function LandingPage() {
             )}
             
             <CardHeader className={cn("relative flex-1 flex flex-col justify-center", isMobile && "pb-1 pt-3")}>
-              <Badge className={cn(
-                "w-fit shadow-md mb-1",
-                isMobile && viewportHeight < 700 ? "text-[9px] px-1.5 py-0.5" : isMobile ? "text-[10px] px-2 py-0.5" : "text-sm px-3 py-1.5 mb-3"
-              )}>
-                ⭐ Cel mai popular
-              </Badge>
-              
-              <CardTitle className={isMobile ? titleSize : "text-2xl"}>
-                {SUBSCRIPTION_PLANS.pro.name}
-              </CardTitle>
+              <div className="flex items-center gap-2 flex-wrap">
+                <CardTitle className={isMobile ? titleSize : "text-2xl"}>
+                  {SUBSCRIPTION_PLANS.pro.name}
+                </CardTitle>
+                <Badge className={cn(
+                  "shadow-md",
+                  isMobile && viewportHeight < 700 ? "text-[9px] px-1.5 py-0.5" : isMobile ? "text-[10px] px-2 py-0.5" : "text-sm px-3 py-1.5"
+                )}>
+                  ⭐ Popular
+                </Badge>
+              </div>
               <div className={cn("font-bold text-primary mt-1", isMobile ? priceSize : "text-4xl")}>
                 {SUBSCRIPTION_PLANS.pro.price} RON
                 <span className={cn("font-normal text-muted-foreground", isMobile && viewportHeight < 700 ? "text-[10px]" : isMobile ? "text-xs" : "text-lg")}>
