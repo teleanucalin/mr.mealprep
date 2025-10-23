@@ -24,10 +24,16 @@ export async function POST(request: Request) {
       "sunday",
     ];
 
-    // Fetch recipes mock
-    const recipesResponse = await fetch(
-      `${request.url.replace("/plan", "/recipes")}?dietMode=${dietMode}`
-    );
+    // Fetch recipes mock - construct proper absolute URL
+    const url = new URL(request.url);
+    const recipesUrl = `${url.protocol}//${url.host}/api/mock/recipes?dietMode=${dietMode}`;
+    
+    const recipesResponse = await fetch(recipesUrl);
+    
+    if (!recipesResponse.ok) {
+      throw new Error(`Failed to fetch recipes: ${recipesResponse.status}`);
+    }
+    
     const { recipes } = await recipesResponse.json();
 
     const dayPlans: DayPlan[] = days.map((day, idx) => {

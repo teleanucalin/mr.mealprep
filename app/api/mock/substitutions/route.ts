@@ -9,10 +9,16 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { originalRecipe, userAllergens } = body;
 
-    // Fetch toate rețetele pentru a găsi substituții
-    const recipesResponse = await fetch(
-      request.url.replace("/substitutions", "/recipes")
-    );
+    // Fetch toate rețetele pentru a găsi substituții - construct proper absolute URL
+    const url = new URL(request.url);
+    const recipesUrl = `${url.protocol}//${url.host}/api/mock/recipes`;
+    
+    const recipesResponse = await fetch(recipesUrl);
+    
+    if (!recipesResponse.ok) {
+      throw new Error(`Failed to fetch recipes: ${recipesResponse.status}`);
+    }
+    
     const { recipes } = await recipesResponse.json();
 
     // Filtrează și scorează rețetele pentru substituții
