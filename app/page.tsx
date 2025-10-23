@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ChefHat, Zap, Check, ArrowDown, Sparkles } from "lucide-react";
+import { Zap, Check, Sparkles, ArrowDown } from "lucide-react";
 import { COPY } from "@/lib/copy";
 import { SUBSCRIPTION_PLANS } from "@/store/useSubscription";
 import { cn } from "@/lib/utils";
@@ -38,27 +39,52 @@ export default function LandingPage() {
   return (
     <div className="space-y-16 md:space-y-24">
       {/* Hero Section */}
-      <section className="text-center flex flex-col items-center justify-center space-y-6 py-12 md:py-16 px-4 slide-up">
-        <div className="flex justify-center">
-          <div className="relative">
-            <ChefHat className="h-20 w-20 md:h-24 md:w-24 text-primary animate-in zoom-in duration-500" />
-            <div className="absolute -top-1 -right-1 w-6 h-6 bg-primary rounded-full animate-pulse" />
+      <section className="relative text-center flex flex-col items-center justify-center space-y-6 min-h-[85vh] md:min-h-0 md:py-16 px-4 slide-up overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="motion-safe:animate-float-slow absolute top-[10%] left-[10%] w-32 h-32 md:w-40 md:h-40 rounded-full bg-primary/5 blur-2xl" 
+               style={{ animationDelay: '0s', animationDuration: '8s' }} />
+          <div className="motion-safe:animate-float-slow absolute top-[60%] right-[15%] w-40 h-40 md:w-52 md:h-52 rounded-full bg-primary/8 blur-3xl" 
+               style={{ animationDelay: '2s', animationDuration: '10s' }} />
+          <div className="motion-safe:animate-float-slow absolute bottom-[15%] left-[20%] w-36 h-36 md:w-44 md:h-44 rounded-full bg-primary/6 blur-2xl" 
+               style={{ animationDelay: '4s', animationDuration: '12s' }} />
+          <div className="motion-safe:animate-float-slow absolute top-[35%] right-[8%] w-28 h-28 md:w-36 md:h-36 rounded-full bg-primary/4 blur-xl" 
+               style={{ animationDelay: '1s', animationDuration: '9s' }} />
+        </div>
+
+        <div className="flex flex-col items-center space-y-4">
+          <div className="relative animate-in zoom-in duration-500">
+            <Image 
+              src="/logo.png" 
+              alt="Mr. MealPrep Logo" 
+              width={250} 
+              height={250}
+              className="w-42 h-42 md:w-32 md:h-32 lg:w-36 lg:h-36"
+              priority
+            />
           </div>
+          
+          <h2 className="text-4xl md:text-3xl lg:text-4xl font-bold tracking-tight text-primary animate-in fade-in duration-700" style={{ animationDelay: '200ms' }}>
+            Mr. MealPrep
+          </h2>
         </div>
         
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+        <h1 className="text-xl md:text-4xl lg:text-5xl font-bold max-w-4xl animate-in fade-in duration-700" style={{ animationDelay: '400ms' }}>
           {COPY.landing.hero.title}
         </h1>
         
-        <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
+        <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-4 animate-in fade-in duration-700" style={{ animationDelay: '600ms' }}>
           {COPY.landing.hero.subtitle}
         </p>
 
-
+        <div className="flex justify-center">
+          <ArrowDown className="h-8 w-8 text-primary animate-bounce" />
+        </div>
+        
       </section>
 
       {/* How It Works */}
-      <section className="space-y-1000 md:space-y-12 py-8 md:py-12 px-4 fade-in">
+      <section className="space-y-8 md:space-y-12 py-8 md:py-12 px-4 fade-in">
         <h2 className="text-2xl md:text-3xl lg:text-4xl text-center font-bold">
           {COPY.landing.howItWorks.title}
         </h2>

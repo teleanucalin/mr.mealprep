@@ -205,6 +205,36 @@
   }
 }
 
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+  66% {
+    transform: translate(-25px, 25px) scale(0.95);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 10s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe\:animate-float-slow {
+    animation: none;
+  }
+  
+  .animate-bounce,
+  .animate-pulse,
+  .animate-in {
+    animation: none !important;
+  }
+}
+
 @keyframes confetti {
   0% {
     transform: translateY(0) rotate(0deg);
