@@ -59,7 +59,11 @@ export const useCart = create<CartState>()(
 
         const items = Array.from(itemsMap.values());
         const subtotal = items.reduce(
-          (sum, item) => sum + item.ingredient.price * item.quantity,
+          (sum, item) => {
+            // Price is for the ingredient's original quantity, calculate proportionally
+            const pricePerUnit = item.ingredient.price / item.ingredient.quantity;
+            return sum + pricePerUnit * item.quantity;
+          },
           0
         );
 
@@ -83,7 +87,10 @@ export const useCart = create<CartState>()(
             item.ingredient.name === ingredientId ? { ...item, quantity } : item
           );
           const subtotal = items.reduce(
-            (sum, item) => sum + item.ingredient.price * item.quantity,
+            (sum, item) => {
+              const pricePerUnit = item.ingredient.price / item.ingredient.quantity;
+              return sum + pricePerUnit * item.quantity;
+            },
             0
           );
           const breakdown = calculateCartBreakdown(subtotal);
@@ -107,7 +114,10 @@ export const useCart = create<CartState>()(
             (item) => item.ingredient.name !== ingredientId
           );
           const subtotal = items.reduce(
-            (sum, item) => sum + item.ingredient.price * item.quantity,
+            (sum, item) => {
+              const pricePerUnit = item.ingredient.price / item.ingredient.quantity;
+              return sum + pricePerUnit * item.quantity;
+            },
             0
           );
           const breakdown = calculateCartBreakdown(subtotal);
@@ -139,7 +149,10 @@ export const useCart = create<CartState>()(
       recalculateCart: () => {
         set((state) => {
           const subtotal = state.cart.items.reduce(
-            (sum, item) => sum + item.ingredient.price * item.quantity,
+            (sum, item) => {
+              const pricePerUnit = item.ingredient.price / item.ingredient.quantity;
+              return sum + pricePerUnit * item.quantity;
+            },
             0
           );
           const breakdown = calculateCartBreakdown(subtotal);
