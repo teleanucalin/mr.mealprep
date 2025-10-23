@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { WeekPlan, DayPlan, Meal, DayOfWeek, UserProfile } from "@/lib/types";
 import { calculateMacroTargets } from "@/lib/nutrition";
+import { GET as getRecipes } from "../recipes/route";
 
 // Simulare generare plan săptămânal
 export async function POST(request: Request) {
@@ -38,16 +39,12 @@ export async function POST(request: Request) {
       "sunday",
     ];
 
-    // Fetch recipes mock - construct proper absolute URL
+    // Get recipes directly instead of HTTP fetch (avoids Vercel auth issues)
     const url = new URL(request.url);
-    const recipesUrl = `${url.protocol}//${url.host}/api/mock/recipes?dietMode=${dietMode}`;
+    url.searchParams.set('dietMode', dietMode);
+    const recipesRequest = new Request(url.toString());
     
-    const recipesResponse = await fetch(recipesUrl);
-    
-    if (!recipesResponse.ok) {
-      throw new Error(`Failed to fetch recipes: ${recipesResponse.status}`);
-    }
-    
+    const recipesResponse = await getRecipes(recipesRequest);
     const { recipes } = await recipesResponse.json();
 
     const dayPlans: DayPlan[] = days.map((day, idx) => {
