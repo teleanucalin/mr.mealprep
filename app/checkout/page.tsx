@@ -160,19 +160,23 @@ export default function CheckoutPage() {
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
-                {cart.items.slice(0, 5).map((item, idx) => (
-                  <div key={idx} className="flex justify-between text-sm">
-                    <div>
-                      <p className="font-medium">{item.ingredient.name}</p>
-                      <p className="text-muted-foreground">
-                        {item.quantity.toFixed(1)} {item.ingredient.unit}
+                {cart.items.slice(0, 5).map((item, idx) => {
+                  const pricePerUnit = item.ingredient.price / item.ingredient.quantity;
+                  const totalPrice = pricePerUnit * item.quantity;
+                  return (
+                    <div key={idx} className="flex justify-between text-sm">
+                      <div>
+                        <p className="font-medium">{item.ingredient.name}</p>
+                        <p className="text-muted-foreground">
+                          {item.quantity.toFixed(1)} {item.ingredient.unit}
+                        </p>
+                      </div>
+                      <p className="font-medium">
+                        {totalPrice.toFixed(2)} RON
                       </p>
                     </div>
-                    <p className="font-medium">
-                      {(item.ingredient.price * item.quantity).toFixed(2)} RON
-                    </p>
-                  </div>
-                ))}
+                  );
+                })}
                 {cart.items.length > 5 && (
                   <p className="text-sm text-muted-foreground">
                     ... și încă {cart.items.length - 5} ingrediente

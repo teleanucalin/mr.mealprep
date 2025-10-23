@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { WeekPlan, DayPlan, Meal, DayOfWeek, UserProfile } from "@/lib/types";
 import { calculateMacroTargets } from "@/lib/nutrition";
+import { GET as getRecipes } from "../recipes/route";
 
 // Simulare generare plan săptămânal
 export async function POST(request: Request) {
@@ -10,8 +11,22 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { profile, efficiency, lockMacros, dietMode } = body;
 
+    // Validate profile has required fields
+    if (!profile || !profile.age || !profile.sex || !profile.weight || !profile.height || !profile.activityLevel) {
+      return NextResponse.json(
+        { error: "Invalid profile: missing required fields" },
+        { status: 400 }
+      );
+    }
+
+    // Ensure pace is set (default to 0 if missing)
+    const completeProfile = {
+      ...profile,
+      pace: profile.pace ?? 0,
+    };
+
     // Calculează macro targets
-    const macroTarget = calculateMacroTargets(profile as UserProfile);
+    const macroTarget = calculateMacroTargets(completeProfile as UserProfile);
 
     // Mock plan săptămânal - în realitate ar folosi AI/algoritm de optimizare
     const days: DayOfWeek[] = [
@@ -24,10 +39,12 @@ export async function POST(request: Request) {
       "sunday",
     ];
 
-    // Fetch recipes mock
-    const recipesResponse = await fetch(
-      `${request.url.replace("/plan", "/recipes")}?dietMode=${dietMode}`
-    );
+    // Get recipes directly instead of HTTP fetch (avoids Vercel auth issues)
+    const url = new URL(request.url);
+    url.searchParams.set('dietMode', dietMode);
+    const recipesRequest = new Request(url.toString());
+    
+    const recipesResponse = await getRecipes(recipesRequest);
     const { recipes } = await recipesResponse.json();
 
     const dayPlans: DayPlan[] = days.map((day, idx) => {
@@ -105,8 +122,12 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ weekPlan, macroTarget });
   } catch (error) {
+    console.error("Error generating plan:", error);
     return NextResponse.json(
-      { error: "Failed to generate plan" },
+      { 
+        error: "Failed to generate plan", 
+        details: error instanceof Error ? error.message : String(error)
+      },
       { status: 500 }
     );
   }
