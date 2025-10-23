@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test Plan API</title></head>
+<body>
+<h1>Testing Plan Generation</h1>
+<button onclick="testPlan()">Generate Plan</button>
+<pre id="result"></pre>
+<script>
+async function testPlan() {
+  const result = document.getElementById('result');
+  result.textContent = 'Loading...';
+  try {
+    const response = await fetch('http://localhost:3002/api/mock/plan', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        profile: {age: 30, sex: 'M', weight: 75, height: 180, objective: 'maintain', activityLevel: 'moderate'},
+        efficiency: 'balanced',
+        lockMacros: true,
+        dietMode: 'omnivore'
+      })
+    });
+    const data = await response.json();
+    result.textContent = JSON.stringify(data, null, 2);
+  } catch (err) {
+    result.textContent = 'Error: ' + err.message;
+  }
+}
+</script>
+</body>
+</html>
