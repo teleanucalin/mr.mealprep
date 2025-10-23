@@ -182,20 +182,11 @@ export default function WeekPage() {
   };
 
   return (
-    <div className="space-y-6 page-enter">
+    <div className="space-y-6 page-enter pb-24">
       {/* Header */}
-      <div className="flex justify-between items-start fade-in">
-        <div>
-          <h1 className="text-3xl font-bold">{COPY.week.title}</h1>
-          <p className="text-muted-foreground">{COPY.week.subtitle}</p>
-        </div>
-        <Button 
-          onClick={handleAddToCart} 
-          className="gap-2 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200"
-        >
-          <ShoppingCart className="h-4 w-4" />
-          {COPY.week.addToCart}
-        </Button>
+      <div className="fade-in">
+        <h1 className="text-3xl font-bold">{COPY.week.title}</h1>
+        <p className="text-muted-foreground">{COPY.week.subtitle}</p>
       </div>
 
       {/* Week Summary */}
@@ -374,6 +365,20 @@ export default function WeekPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Fixed Bottom Button */}
+      <div className="fixed bottom-20 left-0 right-0 z-40 px-4 flex justify-center pointer-events-none">
+        <div className="w-full max-w-md pointer-events-auto">
+          <Button 
+            onClick={handleAddToCart} 
+            size="lg"
+            className="w-full gap-2 shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-200 animate-in slide-in-from-bottom-full"
+          >
+            <ShoppingCart className="h-5 w-5" />
+            {COPY.week.addToCart}
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }

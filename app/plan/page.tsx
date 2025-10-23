@@ -142,32 +142,7 @@ export default function PlanPage() {
             </p>
           </div>
 
-          {/* Lock Macros */}
-          <div className="flex items-center justify-between">
-            <div className="space-y-1">
-              <Label className="flex items-center gap-2">
-                <Lock className="h-4 w-4" />
-                {COPY.plan.lockMacros.label}
-              </Label>
-              <p className="text-xs text-muted-foreground">
-                {COPY.plan.lockMacros.help}
-              </p>
-            </div>
-            <Switch
-              checked={lockMacros}
-              onCheckedChange={setLockMacros}
-              disabled={!getCurrentPlan().limits.lockMacros}
-            />
-          </div>
 
-          {!getCurrentPlan().limits.lockMacros && (
-            <Alert>
-              <AlertCircle className="h-4 w-4" />
-              <AlertDescription>
-                Lock macros este disponibil doar în planurile Pro și Gourmet
-              </AlertDescription>
-            </Alert>
-          )}
 
           {/* Generate Button */}
           <Button
